@@ -1,0 +1,49 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding: 16px;
+}
+.valueRange {
+  display: flex;
+  gap: 10px;
+}
+.chart {
+  &__control {
+    z-index: 100;
+    position: absolute;
+    top: 420px;
+    left: 365px;
+    background: white;
+    opacity: 0.9;
+    font-family: cursive;
+  }
+  &__title-name {
+    font-weight: 600;
+  }
+  &__formula {
+  }
+
+  &__formula-description {
+    display: flex;
+    align-items: center;
+    font-family: cursive;
+    min-height: 40px;
+    padding: 0 0 0 30px;
+  }
+  &__value {
+    min-width: 60px;
+  }
+}
+.not_show {
+  // visibility: hidden;
+  display: none;
+}
+.show_white {
+  opacity: 0;
+}
