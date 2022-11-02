@@ -156,7 +156,7 @@ function StraightLine() {
       </div>
       <ReactEcharts
         option={options}
-        style={{ width: '600px', height: '500px' }}
+        style={{ width: '700px', height: '500px' }}
       ></ReactEcharts>
     </div>
   );
