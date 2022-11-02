@@ -1,6 +1,6 @@
 import ReactEcharts from 'echarts-for-react';
 import { useState } from 'react';
-import './styles.css';
+import './styles.scss';
 
 function func(x, a, b, c) {
   let res = a * x ** 2;
@@ -80,16 +80,45 @@ function App() {
       },
     ],
   };
+  const showBValue = (value) => {
+    const val = Number(value);
+
+    if (val > 0) {
+      return `+ ${val} x`;
+    } else if (val < 0) {
+      return `- ${-1 * val} x`;
+    }
+    return '';
+  };
+  const showAValue = (value) => {
+    const val = Number(value);
+
+    if (val > 0) {
+      return `+ ${val} x`;
+    } else if (val < 0) {
+      return `- ${-1 * val} x`;
+    }
+    return '';
+  };
   return (
     <div className='wrapper'>
-      <div>
-        График y={aValue}*x^2 + x*{bValue} +{cValue}— парабола
+      <div className='chart__formula-description'>
+        <span className='chart__title-name'>График </span>
+        <div className='chart__formula'>
+          <span className=''>y= </span>
+          <span className=''>{aValue > 0 && aValue}</span>
+          <span>
+            x<sup>2</sup>
+          </span>
+          <span>{showBValue(bValue)}</span> +{cValue}—
+          <span className=''>{Number(aValue) ? ' парабола' : ' прямая'}</span>
+        </div>
       </div>
       <ReactEcharts
         option={options}
         style={{ width: '600px', height: '500px' }}
       ></ReactEcharts>
-      <div>
+      <div className='chart__control'>
         <span>коэффициенты</span>
         <div className='valueRange'>
           <span>a </span>
