@@ -2,26 +2,26 @@ import ReactEcharts from 'echarts-for-react';
 import { useState, useRef } from 'react';
 import './styles.scss';
 
-function func(x, b, c) {
-  let res2 = b * x;
-  const res4 = Number(res2) + Number(c);
+function func(x, k, b) {
+  let res2 = k * x;
+  const res4 = Number(res2) + Number(b);
   return res4;
 }
-function generateData(bValue, cValue) {
+function generateData(kValue, bValue) {
   let data = [];
   for (let i = -200; i <= 200; i += 0.1) {
-    data.push([i, func(i, bValue, cValue)]);
+    data.push([i, func(i, kValue, bValue)]);
   }
   return data;
 }
 
 function StraightLine() {
+  const [kValue, setK] = useState(1);
   const [bValue, setB] = useState(0);
-  const [cValue, setC] = useState(0);
   const notNullSum = useRef(false);
 
-  const changeBvalue = (e) => setB(e.target.value || 0);
-  const changeCvalue = (e) => setC(e.target.value || 0);
+  const changekvalue = (e) => setK(e.target.value || 0);
+  const changebvalue = (e) => setB(e.target.value || 0);
 
   let options = {
     animation: false,
@@ -85,11 +85,11 @@ function StraightLine() {
         color: 'black',
         showSymbol: false,
         clip: true,
-        data: generateData(bValue, cValue),
+        data: generateData(kValue, bValue),
       },
     ],
   };
-  const showBValue = (value) => {
+  const showkValue = (value) => {
     const val = Number(value);
     if (val > 0) {
       return `${val} x`;
@@ -98,10 +98,10 @@ function StraightLine() {
     }
     return '';
   };
-  const showCValue = (value) => {
+  const showbValue = (value) => {
     const val = Number(value);
     if (!val) return '';
-    if (val > 0 && !Number(bValue)) return `${val}`;
+    if (val > 0 && !Number(kValue)) return `${val}`;
     if (val > 0) {
       return ` + ${val} `;
     } else if (val < 0) {
@@ -109,7 +109,7 @@ function StraightLine() {
     }
     return '';
   };
-  notNullSum.value = Number(bValue) + Number(cValue) !== 0;
+  notNullSum.value = Number(kValue) + Number(bValue) !== 0;
 
   return (
     <div className='wrapper'>
@@ -118,8 +118,8 @@ function StraightLine() {
           <div className='chart__formula'>
             <span className='chart__title-name'>График </span>
             <span className=''>y = </span>
-            <span>{showBValue(bValue)}</span>
-            <span>{showCValue(cValue)}</span>
+            <span>{showkValue(kValue)}</span>
+            <span>{showbValue(bValue)}</span>
             <span className=''>{' — прямая'}</span>
           </div>
         ) : (
@@ -132,9 +132,9 @@ function StraightLine() {
       <div className='chart__control'>
         <span>коэффициенты</span>
         <div className='valueRange'>
-          <span className='chart__value'>b = {bValue} </span>
+          <span className='chart__value'>k = {kValue} </span>
           <input
-            onChange={(event) => changeBvalue(event)}
+            onChange={(event) => changekvalue(event)}
             type='range'
             min='-5'
             max='5'
@@ -143,9 +143,9 @@ function StraightLine() {
           />
         </div>
         <div className='valueRange'>
-          <span className='chart__value'>c = {cValue}</span>
+          <span className='chart__value'>b = {bValue}</span>
           <input
-            onChange={(event) => changeCvalue(event)}
+            onChange={(event) => changebvalue(event)}
             type='range'
             min='-10'
             max='10'
