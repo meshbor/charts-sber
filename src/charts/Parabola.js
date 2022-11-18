@@ -86,7 +86,7 @@ function Parabola() {
     series: [
       {
         type: 'line',
-        color: 'black',
+        color: 'blue',
         showSymbol: false,
         clip: true,
         data: generateData(aValue, bValue, cValue),

@@ -82,7 +82,7 @@ function StraightLine() {
     series: [
       {
         type: 'line',
-        color: 'black',
+        color: 'blue',
         showSymbol: false,
         clip: true,
         data: generateData(kValue, bValue),
