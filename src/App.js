@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import Surface from './charts/3dSurface';
 import ExponentFunction from './charts/Exponent';
 import Parabola from './charts/Parabola';
 import PowerFunction from './charts/PowerFunction';
@@ -13,6 +14,8 @@ export default function App() {
       <Route path='parabola' element={<Parabola />} />
       <Route path='power' element={<PowerFunction />} />
       <Route path='exponenta' element={<ExponentFunction />} />
+      <Route path='surface' element={<Surface/>} />
+
 
       
       <Route path='*' element={<NoMatch />} />
