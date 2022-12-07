@@ -92,9 +92,9 @@ function StraightLine() {
   const showkValue = (value) => {
     const val = Number(value);
     if (val > 0) {
-      return `${val} x`;
+      return `${(val).toFixed(1)} x`;
     } else if (val < 0) {
-      return `- ${-1 * val} x`;
+      return `- ${-1 * (val).toFixed(1)} x`;
     }
     return '';
   };
@@ -103,9 +103,9 @@ function StraightLine() {
     if (!val) return '';
     if (val > 0 && !Number(kValue)) return `${val}`;
     if (val > 0) {
-      return ` + ${val} `;
+      return ` + ${(val).toFixed(1)} `;
     } else if (val < 0) {
-      return ` - ${-1 * val} `;
+      return ` - ${-1 * (val).toFixed(1)} `;
     }
     return '';
   };

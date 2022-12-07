@@ -12,7 +12,6 @@ function FlatSurface() {
 
   useEffect(() => {
     let options = {
-      tooltip: {},
       backgroundColor: '#fff',
       visualMap: {
         show: true,

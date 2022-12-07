@@ -13,7 +13,6 @@ function Surface() {
 
   useEffect(() => {
     let options = {
-      tooltip: {},
       backgroundColor: '#fff',
       visualMap: {
         show: false,
@@ -46,6 +45,14 @@ function Surface() {
         type: 'value',
       },
       grid3D: {
+        light: {
+          main: {
+            intensity: 0,
+          },
+          ambient: {
+            intensity: 1,
+          },
+        },
         viewControl: {
           // projection: 'orthographic'
         },
@@ -64,9 +71,6 @@ function Surface() {
               step: 0.05,
             },
             z: function (x, y) {
-              if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) {
-                return '-';
-              }
               return Math.sin(x * Math.PI + aValue) * Math.sin(y * Math.PI + aValue);
             },
           },
@@ -83,7 +87,6 @@ function Surface() {
       <div className='chart__formula-description'>
         {notNullSum.value ? (
           <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
             {/* <span className=''>y = </span>
             <span className=''>
               {
@@ -101,20 +104,6 @@ function Surface() {
             <span className=''>y = 0</span>
           </div>
         )}
-      </div>
-      <div className='chart__control'>
-        <span>коэффициенты</span>
-        <div className='valueRange'>
-          <span className='chart__value'>a = {aValue}</span>
-          <input
-            onChange={(event) => changeAvalue(event)}
-            type='range'
-            min='3'
-            max='10'
-            step='1'
-            defaultValue='2'
-          />
-        </div>
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
     </div>
