@@ -15,7 +15,7 @@ function Surface() {
     let options = {
       backgroundColor: '#fff',
       visualMap: {
-        show: false,
+        show: true,
         dimension: 2,
         min: -1,
         max: 1,
