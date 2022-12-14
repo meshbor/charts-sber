@@ -1,7 +1,6 @@
 .App {
-  font-family: sans-serif;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 .wrapper {
   display: flex;
@@ -22,6 +21,15 @@
     background: white;
     opacity: 0.9;
     font-family: cursive;
+    &.value-up {
+      left: 450px;
+      top: 121px;
+      min-height: 41px;
+      display: flex;
+      min-width: 114px;
+      justify-content: center;
+      flex-direction: column;
+    }
   }
   &__title-name {
     font-weight: 600;
@@ -35,6 +43,9 @@
   }
   &__value {
     min-width: 60px;
+    &.value-up {
+      min-width: 114px;
+    }
   }
 }
 .not_show {
@@ -42,4 +53,8 @@
 }
 .show_white {
   opacity: 0;
+}
+.formula-position {
+  margin-right: 10px;
+  min-width: 185px;
 }

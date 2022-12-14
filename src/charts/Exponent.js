@@ -8,7 +8,7 @@ function func(x, a) {
 }
 
 function ExponentFunction() {
-  const [aValue, setA] = useState(1);
+  const [aValue, setA] = useState(2);
 
   const generateData = (aValue) => {
     let data = [];
@@ -21,7 +21,7 @@ function ExponentFunction() {
 
   const notNullSum = useRef(false);
 
-  const changeAvalue = (e) => setA(e.target.value || 1);
+  const changeAvalue = (e) => setA(e.target.value || 2);
 
   notNullSum.value = Number(aValue) !== 0;
 

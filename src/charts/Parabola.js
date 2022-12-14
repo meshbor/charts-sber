@@ -20,7 +20,7 @@ function Parabola() {
   const [aValue, setA] = useState(1);
   const [bValue, setB] = useState(0);
   const [cValue, setC] = useState(0);
-  const notNullSum = useRef(false);
+  const nullSum = useRef(false);
 
   const changeAvalue = (e) => setA(e.target.value || 1);
   const changeBvalue = (e) => setB(e.target.value || 0);
@@ -97,9 +97,13 @@ function Parabola() {
     const val = Number(value);
     if (val > 0 && !Number(aValue)) return `${val} x`;
     if (val > 0) {
-      return `+ ${val} x`;
+      if (val === 1) return ' + x';
+
+      return `+ ${(val).toFixed(1)} × x`;
     } else if (val < 0) {
-      return `- ${-1 * val} x`;
+      if (val === -1) return ' − x';
+
+      return `− ${-1 * (val).toFixed(1)} × x`;
     }
     return '';
   };
@@ -109,7 +113,8 @@ function Parabola() {
     if (val > 0) {
       return `${val} `;
     } else if (val < 0) {
-      return `- ${-1 * val} `;
+      if (val === -1) return `− `
+      return `− ${-1 * val} `;
     }
     return '';
   };
@@ -120,16 +125,18 @@ function Parabola() {
     if (val > 0) {
       return ` + ${val} `;
     } else if (val < 0) {
+
       return ` - ${-1 * val} `;
     }
     return '';
   };
-  notNullSum.value = Number(aValue) + Number(bValue) + Number(cValue) !== 0;
+  nullSum.value =
+    Number(aValue) === 0 && Number(bValue) === 0 && Number(cValue) === 0;
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        {notNullSum.value ? (
+        {!nullSum.value ? (
           <div className='chart__formula'>
             <span className='chart__title-name'>График </span>
             <span className=''>y = </span>
@@ -137,7 +144,7 @@ function Parabola() {
               {showAValue(aValue)}
               {
                 <span className={!!Number(aValue) ? 'show' : 'not_show'}>
-                  x<sup>2</sup>
+                  x<sup>2</sup>{' '}
                 </span>
               }
             </span>

@@ -1,27 +1,34 @@
 import ReactEcharts from 'echarts-for-react';
 import { useState, useRef } from 'react';
+import { convertUnicode } from '../utilites/convertUnicode';
 import './styles.scss';
 
-function func(x, k, b) {
-  let res2 = k * x;
-  const res4 = Number(res2) + Number(b);
-  return res4;
+function log_fact(value) {
+  if (value === 0) return 0;
+  let result = 0;
+  for (let i = 1; i <= value; i++) {
+    result = result + Math.log(i);
+  }
+  console.log(result);
+  return result;
 }
-function generateData(kValue, bValue) {
+function poisson_log(k, alpha) {
+  return Math.exp(k * Math.log(alpha) - log_fact(k) - alpha);
+}
+function generateData(alpha) {
   let data = [];
-  for (let i = -200; i <= 200; i += 0.1) {
-    data.push([i, func(i, kValue, bValue)]);
+  for (let i = 0; i <= 35; i += 1) {
+    data.push([i, poisson_log(i, alpha)]);
   }
   return data;
 }
 
-function StraightLine() {
-  const [kValue, setK] = useState(1);
-  const [bValue, setB] = useState(0);
-  const nullSum = useRef(false);
+function Poisson() {
+  const [alpha, setP] = useState(1);
 
-  const changekvalue = (e) => setK(e.target.value || 0);
-  const changebvalue = (e) => setB(e.target.value || 0);
+  const notNullSum = useRef(false);
+
+  const changePvalue = (e) => setP(e.target.value || 0);
 
   let options = {
     animation: false,
@@ -47,8 +54,8 @@ function StraightLine() {
     },
     yAxis: {
       name: 'y',
-      min: -100,
-      max: 100,
+      // min: -10,
+      // max: 5,
       minorTick: {
         show: true,
       },
@@ -81,80 +88,66 @@ function StraightLine() {
     ],
     series: [
       {
+        // type: 'scatter',
         type: 'line',
         color: 'blue',
         showSymbol: false,
         clip: true,
-        data: generateData(kValue, bValue),
+        data: generateData(alpha),
       },
     ],
   };
   const showkValue = (value) => {
     const val = Number(value);
     if (val > 0) {
-      if (val === 1) return 'x';
-      return `${val.toFixed(1)} × x`;
+      return `${val.toFixed(1)} x`;
     } else if (val < 0) {
-      if (val === -1) return '− x';
-      return `− ${-1 * val.toFixed(1)} × x`;
+      return `- ${-1 * val.toFixed(1)} x`;
     }
     return '';
   };
   const showbValue = (value) => {
     const val = Number(value);
     if (!val) return '';
-    if (val > 0 && !Number(kValue)) return `${val}`;
+    if (val > 0 && !Number(alpha)) return `${val}`;
     if (val > 0) {
       return ` + ${val.toFixed(1)} `;
     } else if (val < 0) {
-      return ` − ${-1 * val.toFixed(1)} `;
+      return ` - ${-1 * val.toFixed(1)} `;
     }
     return '';
   };
-  nullSum.value = Number(kValue) === 0 && Number(bValue) === 0;
+  notNullSum.value = Number(alpha) !== 0;
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        {!nullSum.value ? (
-          <>
-            <div className='chart__formula formula-position'>
-              <span className='chart__title-name'>График </span>
-              <span className=''>y = </span>
-              <span>{showkValue(kValue)}</span>
-              <span>{showbValue(bValue)}</span>
-            </div>
+        {/* {notNullSum.value ? (
+          <div className='chart__formula'>
+            <span className='chart__title-name'>График </span>
+            <span className=''>y = </span>
+            <span>{showkValue(alpha)}</span>
+            <span>{showbValue(nValue)}</span>
             <span className=''>{' — прямая'}</span>
-          </>
+          </div>
         ) : (
           <div className='chart__formula'>
             <span className='chart__title-name'>График </span>
             <span className=''>y = 0 - прямая</span>
           </div>
-        )}
+        )} */}
       </div>
-      <div className='chart__control'>
+      <div className='chart__control value-up '>
         <span>коэффициенты</span>
         <div className='valueRange'>
-          <span className='chart__value'>k = {kValue} </span>
+          <span className='chart__value value-up'>λ= {alpha} </span>
           <input
-            onChange={(event) => changekvalue(event)}
+            onChange={(event) => changePvalue(event)}
             type='range'
-            min='-5'
-            max='5'
+            min='0.1'
+            max='20'
             step='0.1'
-            defaultValue='0'
-          />
-        </div>
-        <div className='valueRange'>
-          <span className='chart__value'>b = {bValue}</span>
-          <input
-            onChange={(event) => changebvalue(event)}
-            type='range'
-            min='-10'
-            max='10'
-            step='0.5'
-            defaultValue='0'
+            defaultValue='1'
           />
         </div>
       </div>
@@ -166,4 +159,4 @@ function StraightLine() {
   );
 }
 
-export default StraightLine;
+export default Poisson;
