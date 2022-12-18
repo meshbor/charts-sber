@@ -1,15 +1,11 @@
 import ReactEcharts from 'echarts-for-react';
 import { useState, useRef } from 'react';
+import { faktorial } from '../constants/faktorial';
 import './styles.scss';
-
 
 function log_fact(value) {
   if (value === 0) return 0;
-  let result = 0;
-  for (let i = 1; i <= value; i++) {
-    result = result + Math.log(i);
-  }
-  return result;
+  return faktorial[Math.floor(value)];
 }
 function binom(nValue, k, pValue) {
   return Math.exp(
@@ -22,7 +18,7 @@ function binom(nValue, k, pValue) {
 }
 function generateData(nValue, pValue) {
   let data = [];
-  for (let i = 0; i <= 35; i += 1) {
+  for (let i = 0; i < nValue; i += 1) {
     data.push([i, binom(nValue, i, pValue)]);
   }
   return data;
@@ -47,6 +43,7 @@ function Binomial() {
     },
     xAxis: {
       name: 'x',
+      max:  Math.floor(nValue * 0.9),
       minorTick: {
         show: true,
       },
@@ -57,6 +54,9 @@ function Binomial() {
         lineStyle: {
           width: '1.5',
         },
+      },
+      axisTick: {
+        alignWithLabel: true
       },
     },
     yAxis: {
@@ -75,24 +75,24 @@ function Binomial() {
         },
       },
     },
-    dataZoom: [
-      {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        xAxisIndex: [0],
-        startValue: -20,
-        endValue: 20,
-      },
-      {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        yAxisIndex: [0],
-        startValue: -20,
-        endValue: 20,
-      },
-    ],
+    // dataZoom: [
+    //   {
+    //     show: true,
+    //     type: 'inside',
+    //     filterMode: 'none',
+    //     xAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20,
+    //   },
+    //   {
+    //     show: true,
+    //     type: 'inside',
+    //     filterMode: 'none',
+    //     yAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20,
+    //   },
+    // ],
     series: [
       {
         type: 'line',
@@ -103,46 +103,11 @@ function Binomial() {
       },
     ],
   };
-  const showkValue = (value) => {
-    const val = Number(value);
-    if (val > 0) {
-      return `${val.toFixed(1)} x`;
-    } else if (val < 0) {
-      return `- ${-1 * val.toFixed(1)} x`;
-    }
-    return '';
-  };
-  const showbValue = (value) => {
-    const val = Number(value);
-    if (!val) return '';
-    if (val > 0 && !Number(pValue)) return `${val}`;
-    if (val > 0) {
-      return ` + ${val.toFixed(1)} `;
-    } else if (val < 0) {
-      return ` - ${-1 * val.toFixed(1)} `;
-    }
-    return '';
-  };
   notNullSum.value = Number(pValue) + Number(nValue) !== 0;
 
   return (
     <div className='wrapper'>
-      <div className='chart__formula-description'>
-        {/* {notNullSum.value ? (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = </span>
-            <span>{showkValue(pValue)}</span>
-            <span>{showbValue(nValue)}</span>
-            <span className=''>{' — прямая'}</span>
-          </div>
-        ) : (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = 0 - прямая</span>
-          </div>
-        )} */}
-      </div>
+      <div className='chart__formula-description'></div>
       <div className='chart__control'>
         <span>коэффициенты</span>
         <div className='valueRange'>
@@ -150,10 +115,10 @@ function Binomial() {
           <input
             onChange={(event) => changePvalue(event)}
             type='range'
-            min='0.01'
-            max='1'
+            min='0.05'
+            max='0.9'
             step='0.05'
-            defaultValue='0'
+            defaultValue='0.45'
           />
         </div>
         <div className='valueRange'>
@@ -161,10 +126,10 @@ function Binomial() {
           <input
             onChange={(event) => changeNvalue(event)}
             type='range'
-            min='1'
+            min='3'
             max='100'
             step='1'
-            defaultValue='6'
+            defaultValue='51'
           />
         </div>
       </div>

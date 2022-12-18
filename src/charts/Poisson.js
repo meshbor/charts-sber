@@ -1,6 +1,5 @@
 import ReactEcharts from 'echarts-for-react';
 import { useState, useRef } from 'react';
-import { convertUnicode } from '../utilites/convertUnicode';
 import './styles.scss';
 
 function log_fact(value) {
@@ -9,7 +8,6 @@ function log_fact(value) {
   for (let i = 1; i <= value; i++) {
     result = result + Math.log(i);
   }
-  console.log(result);
   return result;
 }
 function poisson_log(k, alpha) {
@@ -17,7 +15,7 @@ function poisson_log(k, alpha) {
 }
 function generateData(alpha) {
   let data = [];
-  for (let i = 0; i <= 35; i += 1) {
+  for (let i = 0; i <= 40; i += 1) {
     data.push([i, poisson_log(i, alpha)]);
   }
   return data;
@@ -68,24 +66,24 @@ function Poisson() {
         },
       },
     },
-    dataZoom: [
-      {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        xAxisIndex: [0],
-        startValue: -20,
-        endValue: 20,
-      },
-      {
-        show: true,
-        type: 'inside',
-        filterMode: 'none',
-        yAxisIndex: [0],
-        startValue: -20,
-        endValue: 20,
-      },
-    ],
+    // dataZoom: [
+    //   {
+    //     show: true,
+    //     type: 'inside',
+    //     filterMode: 'none',
+    //     xAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20,
+    //   },
+    //   {
+    //     show: true,
+    //     type: 'inside',
+    //     filterMode: 'none',
+    //     yAxisIndex: [0],
+    //     startValue: -20,
+    //     endValue: 20,
+    //   },
+    // ],
     series: [
       {
         // type: 'scatter',
