@@ -18,7 +18,7 @@ function binom(nValue, k, pValue) {
 }
 function generateData(nValue, pValue) {
   let data = [];
-  for (let i = 0; i < nValue; i += 1) {
+  for (let i = 0; i <= nValue; i += 1) {
     data.push([i, binom(nValue, i, pValue)]);
   }
   return data;
@@ -43,7 +43,7 @@ function Binomial() {
     },
     xAxis: {
       name: 'x',
-      max:  Math.floor(nValue * 0.9),
+      max: nValue,
       minorTick: {
         show: true,
       },
@@ -56,13 +56,13 @@ function Binomial() {
         },
       },
       axisTick: {
-        alignWithLabel: true
+        alignWithLabel: true,
       },
     },
     yAxis: {
       name: 'y',
-      // min: -10,
-      // max: 5,
+      min: -0.2,
+      max: pValue < 0.3 ? 1 : 0.5,
       minorTick: {
         show: true,
       },
@@ -126,7 +126,7 @@ function Binomial() {
           <input
             onChange={(event) => changeNvalue(event)}
             type='range'
-            min='3'
+            min='2'
             max='100'
             step='1'
             defaultValue='51'

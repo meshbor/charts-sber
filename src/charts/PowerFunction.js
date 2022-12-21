@@ -3,26 +3,36 @@ import { React, useState, useRef, useEffect } from 'react';
 import './styles.scss';
 
 function func(x, s) {
-  let res = x ** s;
-  return Number(res);
+  return Number(Math.pow(x, s));
 }
 
 function PowerFunction() {
   const [sValue, setS] = useState(3);
   const generateData = (sValue) => {
     let data = [];
+
     // eslint-disable-next-line eqeqeq
-    const correctS = sValue == -2 ?-1.99 : sValue;
-    for (let i = -5; i <= 5; i += 0.1) {
+    const correctS = sValue == -2 ? -1.99 : sValue;
+    for (let i = 0.01; i < 5; i += 0.01) {
       data.push([i, func(i, correctS)]);
     }
+
     return data;
+  };
+  const generateData2 = (sValue) => {
+    let data2 = [];
+
+    // eslint-disable-next-line eqeqeq
+    const correctS = sValue == -2 ? -1.99 : sValue;
+    for (let i = -5; i < 0; i += 0.01) {
+      data2.push([i, func(i, correctS)]);
+    }
+    return data2;
   };
 
   const notNullSum = useRef(false);
 
   const changeSvalue = (e) => setS(e.target.value || -2);
-
 
   useEffect(() => {
     let options = {
@@ -92,6 +102,13 @@ function PowerFunction() {
           clip: true,
           data: generateData(sValue),
         },
+        {
+          type: 'line',
+          color: 'blue',
+          showSymbol: false,
+          clip: true,
+          data: generateData2(sValue),
+        },
       ],
     };
     let chartDom = document.getElementById('echartsID');
@@ -140,7 +157,6 @@ function PowerFunction() {
         </div>
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
-
     </div>
   );
 }
