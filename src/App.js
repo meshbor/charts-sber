@@ -10,6 +10,7 @@ import StraightLine from './charts/StraightLine';
 import Poisson from './charts/Poisson';
 import BigNumberLaw from './charts/BigNumberLaw';
 import Router from './router/router';
+import DistributionConvergence from './charts/DistributionConvergence';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
       <Route path='binomial' element={<Binomial />} />
       <Route path='poisson' element={<Poisson />} />
       <Route path='big-number-law' element={<BigNumberLaw />} />
+      <Route path='distribution-convergence' element={<DistributionConvergence />} />
       <Route path='*' element={<NoMatch />} />
     </Routes>
   );

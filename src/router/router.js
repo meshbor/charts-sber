@@ -36,6 +36,9 @@ export default function Router() {
           <Link to='/big-number-law'>big-number-law</Link>
         </li>
         <li>
+          <Link to='/distribution-convergence'>distribution-convergence</Link>
+        </li>
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>
