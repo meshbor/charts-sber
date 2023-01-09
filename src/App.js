@@ -8,11 +8,14 @@ import Parabola from './charts/Parabola';
 import PowerFunction from './charts/PowerFunction';
 import StraightLine from './charts/StraightLine';
 import Poisson from './charts/Poisson';
+import BigNumberLaw from './charts/BigNumberLaw';
+import Router from './router/router';
 
 export default function App() {
   return (
     <Routes>
       <Route path='/' element={<Parabola />} />
+      <Route path='router' element={<Router />} />
       <Route path='line' element={<StraightLine />} />
       <Route path='parabola' element={<Parabola />} />
       <Route path='power' element={<PowerFunction />} />
@@ -21,6 +24,7 @@ export default function App() {
       <Route path='flatsurface' element={<FlatSurface />} />
       <Route path='binomial' element={<Binomial />} />
       <Route path='poisson' element={<Poisson />} />
+      <Route path='big-number-law' element={<BigNumberLaw />} />
       <Route path='*' element={<NoMatch />} />
     </Routes>
   );

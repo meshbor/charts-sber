@@ -30,6 +30,10 @@
       justify-content: center;
       flex-direction: column;
     }
+    &.value-up-left {
+      top: 141px;
+      left: 100px;
+    }
   }
   &__title-name {
     font-weight: 600;
