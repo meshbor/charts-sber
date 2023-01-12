@@ -14,10 +14,10 @@ function func(mu, sigma, x) {
 }
 
 function Teorver_4_1_2() {
-  const [muValue, setMu] = useState(0.5);
-  const [sigmaValue, setSigma] = useState(0.5);
-  const [muValueDeb, setMuDeb] = useState(0.5);
-  const [sigmaValueDeb, setSigmaDeb] = useState(0.5);
+  const [muValue, setMu] = useState('0.5');
+  const [sigmaValue, setSigma] = useState('0.5');
+  const [muValueDeb, setMuDeb] = useState('0.5');
+  const [sigmaValueDeb, setSigmaDeb] = useState('0.5');
 
   const generateData = useMemo(() => {
     let data = [];
@@ -125,7 +125,7 @@ function Teorver_4_1_2() {
     <div className='wrapper'>
       <div className='chart__formula-description'>
         <div className='chart__formula'>
-          <span>
+          <span style={{fontSize: '18px'}}>
             <MathJaxContext config={config}>
               <MathJax>
                 График{' '}
