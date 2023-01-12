@@ -66,27 +66,9 @@ function Poisson() {
         },
       },
     },
-    // dataZoom: [
-    //   {
-    //     show: true,
-    //     type: 'inside',
-    //     filterMode: 'none',
-    //     xAxisIndex: [0],
-    //     startValue: -20,
-    //     endValue: 20,
-    //   },
-    //   {
-    //     show: true,
-    //     type: 'inside',
-    //     filterMode: 'none',
-    //     yAxisIndex: [0],
-    //     startValue: -20,
-    //     endValue: 20,
-    //   },
-    // ],
+
     series: [
       {
-        // type: 'scatter',
         type: 'line',
         color: 'blue',
         showSymbol: false,
@@ -95,45 +77,11 @@ function Poisson() {
       },
     ],
   };
-  const showkValue = (value) => {
-    const val = Number(value);
-    if (val > 0) {
-      return `${val.toFixed(1)} x`;
-    } else if (val < 0) {
-      return `- ${-1 * val.toFixed(1)} x`;
-    }
-    return '';
-  };
-  const showbValue = (value) => {
-    const val = Number(value);
-    if (!val) return '';
-    if (val > 0 && !Number(alpha)) return `${val}`;
-    if (val > 0) {
-      return ` + ${val.toFixed(1)} `;
-    } else if (val < 0) {
-      return ` - ${-1 * val.toFixed(1)} `;
-    }
-    return '';
-  };
   notNullSum.value = Number(alpha) !== 0;
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        {/* {notNullSum.value ? (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = </span>
-            <span>{showkValue(alpha)}</span>
-            <span>{showbValue(nValue)}</span>
-            <span className=''>{' — прямая'}</span>
-          </div>
-        ) : (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = 0 - прямая</span>
-          </div>
-        )} */}
       </div>
       <div className='chart__control value-up '>
         <span>коэффициенты</span>

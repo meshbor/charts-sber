@@ -4,10 +4,10 @@ import * as echarts from 'echarts';
 import 'echarts-gl';
 
 function Surface() {
+  //  fixme delete state?
+  
   const [aValue, setA] = useState(1);
   const notNullSum = useRef(false);
-
-  const changeAvalue = (e) => setA(e.target.value || 1);
 
   notNullSum.value = Number(aValue) !== 0;
 
@@ -87,16 +87,6 @@ function Surface() {
       <div className='chart__formula-description'>
         {notNullSum.value ? (
           <div className='chart__formula'>
-            {/* <span className=''>y = </span>
-            <span className=''>
-              {
-                <span className='show'>
-                  a<sup> x</sup>
-                </span>
-              }
-            </span>
-            <span className=''>{' — степенная функция'}</span>
-            {<sup className='show_white'>{aValue}</sup>} */}
           </div>
         ) : (
           <div className='chart__formula'>

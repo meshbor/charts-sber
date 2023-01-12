@@ -39,6 +39,9 @@ export default function Router() {
           <Link to='/distribution-convergence'>distribution-convergence</Link>
         </li>
         <li>
+          <Link to='/teorver_4_1_2'>teorver_4_1_2</Link>
+        </li>
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>

@@ -1,14 +1,8 @@
-import { React, useState, useRef, useEffect } from 'react';
+import { React, useEffect } from 'react';
 import './styles.scss';
 import * as echarts from 'echarts';
 
 function FlatSurface() {
-  const [aValue, setA] = useState(1);
-  const notNullSum = useRef(false);
-
-  const changeAvalue = (e) => setA(e.target.value || 1);
-
-  notNullSum.value = Number(aValue) !== 0;
 
   useEffect(() => {
     let options = {
@@ -83,45 +77,16 @@ function FlatSurface() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
-  }, [aValue]);
+  }, []);
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        {notNullSum.value ? (
           <div className='chart__formula'>
             <span className='chart__title-name'>График </span>
-            {/* <span className=''>y = </span>
-            <span className=''>
-              {
-                <span className='show'>
-                  a<sup> x</sup>
-                </span>
-              }
-            </span>
-            <span className=''>{' — степенная функция'}</span>
-            {<sup className='show_white'>{aValue}</sup>} */}
           </div>
-        ) : (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = 0</span>
-          </div>
-        )}
       </div>
       <div className='chart__control'>
-        {/* <span>коэффициенты</span> */}
-        {/* <div className='valueRange'>
-          <span className='chart__value'>a = {aValue}</span>
-          <input
-            onChange={(event) => changeAvalue(event)}
-            type='range'
-            min='3'
-            max='10'
-            step='1'
-            defaultValue='2'
-          />
-        </div> */}
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
     </div>

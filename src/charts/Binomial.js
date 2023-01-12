@@ -75,24 +75,6 @@ function Binomial() {
         },
       },
     },
-    // dataZoom: [
-    //   {
-    //     show: true,
-    //     type: 'inside',
-    //     filterMode: 'none',
-    //     xAxisIndex: [0],
-    //     startValue: -20,
-    //     endValue: 20,
-    //   },
-    //   {
-    //     show: true,
-    //     type: 'inside',
-    //     filterMode: 'none',
-    //     yAxisIndex: [0],
-    //     startValue: -20,
-    //     endValue: 20,
-    //   },
-    // ],
     series: [
       {
         type: 'line',

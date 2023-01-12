@@ -11,6 +11,7 @@ import Poisson from './charts/Poisson';
 import BigNumberLaw from './charts/BigNumberLaw';
 import Router from './router/router';
 import DistributionConvergence from './charts/DistributionConvergence';
+import Teorver_4_1_2 from './charts/Teorver_4_1_2';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Route path='poisson' element={<Poisson />} />
       <Route path='big-number-law' element={<BigNumberLaw />} />
       <Route path='distribution-convergence' element={<DistributionConvergence />} />
+      <Route path='teorver_4_1_2' element={<Teorver_4_1_2 />} />
       <Route path='*' element={<NoMatch />} />
     </Routes>
   );
