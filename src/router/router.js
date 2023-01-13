@@ -44,11 +44,12 @@ export default function Router() {
         <li>
           <Link to='/teorver2_4_1_2'>Teorver2_4_1_2</Link>
         </li>
-        
         <li>
           <Link to='/normal-distribution'>Стандартное распределение</Link>
         </li>
-
+        <li>
+          <Link to='/epsilon-scutter'>epsilon-scutter</Link>
+        </li>
         <li>
           <Link to='/router'>router</Link>
         </li>
