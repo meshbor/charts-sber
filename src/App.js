@@ -12,6 +12,9 @@ import BigNumberLaw from './charts/BigNumberLaw';
 import Router from './router/router';
 import DistributionConvergence from './charts/DistributionConvergence';
 import Teorver_4_1_2 from './charts/Teorver_4_1_2';
+import NormalDistribution from './charts/NormalDistribution';
+import Teorver2_4_1_2 from './charts/Teorver2_4_1_2';
+import EpsilonScutter from './charts/EpsilonScutter';
 
 export default function App() {
   return (
@@ -29,6 +32,9 @@ export default function App() {
       <Route path='big-number-law' element={<BigNumberLaw />} />
       <Route path='distribution-convergence' element={<DistributionConvergence />} />
       <Route path='teorver_4_1_2' element={<Teorver_4_1_2 />} />
+      <Route path='teorver2_4_1_2' element={<Teorver2_4_1_2 />} />
+      <Route path='normal-distribution' element={<NormalDistribution />} />
+      <Route path='epsilon-scutter' element={<EpsilonScutter />} />
       <Route path='*' element={<NoMatch />} />
     </Routes>
   );
