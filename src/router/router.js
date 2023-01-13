@@ -42,6 +42,14 @@ export default function Router() {
           <Link to='/teorver_4_1_2'>teorver_4_1_2</Link>
         </li>
         <li>
+          <Link to='/teorver2_4_1_2'>Teorver2_4_1_2</Link>
+        </li>
+        
+        <li>
+          <Link to='/normal-distribution'>Стандартное распределение</Link>
+        </li>
+
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>

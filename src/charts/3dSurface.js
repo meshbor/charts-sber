@@ -1,16 +1,9 @@
-import { React, useState, useRef, useEffect } from 'react';
+import { React, useEffect } from 'react';
 import './styles.scss';
 import * as echarts from 'echarts';
 import 'echarts-gl';
 
 function Surface() {
-  //  fixme delete state?
-  
-  const [aValue, setA] = useState(1);
-  const notNullSum = useRef(false);
-
-  notNullSum.value = Number(aValue) !== 0;
-
   useEffect(() => {
     let options = {
       backgroundColor: '#fff',
@@ -71,7 +64,7 @@ function Surface() {
               step: 0.05,
             },
             z: function (x, y) {
-              return Math.sin(x * Math.PI + aValue) * Math.sin(y * Math.PI + aValue);
+              return Math.sin(x * Math.PI + 1) * Math.sin(y * Math.PI + 1);
             },
           },
         },
@@ -80,20 +73,12 @@ function Surface() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
-  }, [aValue]);
+  }, []);
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        {notNullSum.value ? (
-          <div className='chart__formula'>
-          </div>
-        ) : (
-          <div className='chart__formula'>
-            <span className='chart__title-name'>График </span>
-            <span className=''>y = 0</span>
-          </div>
-        )}
+        <div className='chart__formula'></div>
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
     </div>

@@ -62,3 +62,24 @@
   margin-right: 10px;
   min-width: 185px;
 }
+
+.normal-distribution {
+  &__info {
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__red {
+    min-width: 200px;
+    color: red;
+  }
+  &__green {
+    min-width: 200px;
+    color: lightgreen;
+  }
+  &__orange {
+    min-width: 200px;
+    color: orange;
+  }
+}
