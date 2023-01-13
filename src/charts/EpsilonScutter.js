@@ -1,9 +1,5 @@
 import * as echarts from 'echarts';
-import { React, useState, useEffect, useMemo, useRef } from 'react';
-import {
-  distributionNormal,
-  distributionMedium,
-} from '../constants/distributionNormal';
+import { React, useState, useEffect, useMemo } from 'react';
 import useDebounce from '../utilites/useDebounce';
 import './styles.scss';
 
