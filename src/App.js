@@ -20,7 +20,7 @@ import EpsilonScutter from './charts/EpsilonScutter';
 // 1 Актуализируем мейн -  git pull origin main
 // 2 отпочковываемся от мейна -  git checkout -b your_br_name
 // --- ваша работа 
-// 3 обновляем рабочую ветку -  либо через ui vscode либо 
+// 3 обновляем рабочую ветку -  либо через ui vscode либо  git add -A  затем git commit -m 'info'  затем git push origin имя_ветки
 
 export default function App() {
   return (
