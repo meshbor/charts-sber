@@ -1,6 +1,8 @@
 import ReactEcharts from 'echarts-for-react';
 import { useState, useRef } from 'react';
 import './styles.scss';
+console.log('test');
+
 
 function log_fact(value) {
   if (value === 0) return 0;
