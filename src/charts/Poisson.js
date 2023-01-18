@@ -21,6 +21,9 @@ function generateData(alpha) {
   return data;
 }
 
+console.log('test');
+
+
 function Poisson() {
   const [alpha, setP] = useState(1);
 

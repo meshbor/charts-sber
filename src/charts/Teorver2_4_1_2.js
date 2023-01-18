@@ -11,6 +11,10 @@ function func(lambdaValue, x) {
   return res;
 }
 
+function teorverTmp () {
+  console.log('TeorverTmp');
+}
+
 function Teorver2_4_1_2() {
   const [lambdaValue, setMu] = useState('2.7');
   const [lambdaValueDeb, setMuDeb] = useState('2.7');
