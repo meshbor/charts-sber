@@ -31,8 +31,8 @@ export default function App() {
       <Route path='poisson' element={<Poisson />} />
       <Route path='big-number-law' element={<BigNumberLaw />} />
       <Route path='distribution-convergence' element={<DistributionConvergence />} />
-      <Route path='teorver_4_1_2' element={<Teorver_4_1_2 />} />
-      <Route path='teorver2_4_1_2' element={<Teorver2_4_1_2 />} />
+      <Route path='normal-distribution_4_1_2' element={<Teorver_4_1_2 />} />
+      <Route path='exponential-distribution_4_1_2' element={<Teorver2_4_1_2 />} />
       <Route path='normal-distribution' element={<NormalDistribution />} />
       <Route path='epsilon-scutter' element={<EpsilonScutter />} />
       <Route path='*' element={<NoMatch />} />

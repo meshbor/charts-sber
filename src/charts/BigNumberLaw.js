@@ -61,11 +61,13 @@ function BigNumberLaw() {
       yAxis: [
         {
           type: 'value',
+          min: 0,
+          max: 1,
         },
       ],
       series: [
         {
-          name: 'Вероятность',
+          name: 'Частота',
           type: 'bar',
           barWidth: '60%',
           data,
@@ -88,12 +90,12 @@ function BigNumberLaw() {
       <div className='chart__formula-description'>
         <div className='chart__formula'>
           <span className='chart__title-name'>
-            График Закона больших чисел{' '}
+            Частоты значений{' '}
           </span>
         </div>
       </div>
       <div className='chart__control value-up-left'>
-        <span>коэффициент</span>
+        <span>Число испытаний</span>
         <div className='valueRange'>
           <span className='chart__value'>n = {nValue}</span>
           <input

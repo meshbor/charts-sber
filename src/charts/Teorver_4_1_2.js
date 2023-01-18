@@ -138,7 +138,7 @@ function Teorver_4_1_2() {
         </div>
       </div>
       <div className='chart__control value-up'>
-        <span>коэффициенты</span>
+        <span>Параметры</span>
         <div className='valueRange'>
           <span className='chart__value'> μ = {muValue}</span>
           <input

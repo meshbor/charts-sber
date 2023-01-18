@@ -9,11 +9,27 @@ function EpsilonScutter() {
 
   const generateData = useMemo(() => {
     let data = [];
-    for (let i = 1; i < 10; i += 0.1) {
-      data.push([i, 1 / muValue]);
+    for (let i = 0; i < 10; i += 1) {
+      data.push([i, 3]);
     }
     return data;
   }, [muValue]);
+
+  const generateDataLine = () => {
+    let data = [];
+    for (let i = 0; i < 10; i += 0.1) {
+      data.push([i, muValue]);
+    }
+    return data;
+  }
+  
+  const generateDataLine2 = () => {
+    let data = [];
+    for (let i = 0; i < 10; i += 0.1) {
+      data.push([i, -muValue]);
+    }
+    return data;
+  }
 
   useEffect(() => {
     let options = {
@@ -23,34 +39,50 @@ function EpsilonScutter() {
       },
       xAxis: {},
       yAxis: {
-        // min: 0,
-        // max: 4,
-        axisLabel: {
-          show: false,
-        },
+        // min: -10,
+        // max: 10,
+        // axisLabel: {
+        //   show: false,
+        // },
       },
       dataZoom: [
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          xAxisIndex: [0],
-        },
+        // {
+        //   show: true,
+        //   type: 'inside',
+        //   filterMode: 'none',
+        //   xAxisIndex: [0],
+        // },
         {
           show: true,
           type: 'inside',
           filterMode: 'none',
           yAxisIndex: [0],
-          startValue: -10,
-          endValue: 10,
+          // startValue: -10,
+          // endValue: 10,
         },
       ],
       series: [
         {
-          symbolSize: 10,
-          data: generateData,
+          // symbolSize: 10,
+          data: [[1, 1], [1, 1/2], [1, 1/3], [1, 1/4]],
           type: 'scatter',
           color: 'grey',
+        },
+        {
+          // symbolSize: 10,
+          data: generateDataLine(),
+          type: 'line',
+          color: 'blue',
+          showSymbol: false,
+          clip: true,
+        },
+        {
+          // symbolSize: 10,
+          data: generateDataLine2(),
+          type: 'line',
+          color: 'blue',
+          showSymbol: false,
+          clip: true,
         },
       ],
     };
@@ -70,7 +102,7 @@ function EpsilonScutter() {
       <div className='chart__formula-description'>
         <div className='chart__formula'>
           <span style={{ fontSize: '18px' }}>
-            График Стандартного распределения
+            График 
           </span>
         </div>
       </div>
@@ -82,11 +114,12 @@ function EpsilonScutter() {
             onChange={(event) => setMuDeb(event.target.value)}
             type='range'
             min='0'
-            max='4'
-            step='0.1'
+            max='1'
+            step='0.05'
             // defaultValue={1}
           />
         </div>
+      
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
     </div>

@@ -115,13 +115,13 @@ function Teorver2_4_1_2() {
         <div className='chart__formula'>
           <span style={{ fontSize: '18px' }}>
             <MathJaxContext config={config}>
-              <MathJax>График {'`p(x)  = lambda e^(-lambda x), x>=0`'}</MathJax>
+              <MathJax>График {'`p(x)  = lambda e^(-lambda x), quad  x>=0`'}</MathJax>
             </MathJaxContext>
           </span>
         </div>
       </div>
       <div className='chart__control value-up'>
-        <span>коэффициент</span>
+        <span>Параметр</span>
         <div className='valueRange'>
           <span className='chart__value'> λ = {lambdaValue}</span>
           <input

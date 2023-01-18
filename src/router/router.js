@@ -39,10 +39,10 @@ export default function Router() {
           <Link to='/distribution-convergence'>distribution-convergence</Link>
         </li>
         <li>
-          <Link to='/teorver_4_1_2'>teorver_4_1_2</Link>
+          <Link to='/normal-distribution_4_1_2'>normal-distribution 4_1_2</Link>
         </li>
         <li>
-          <Link to='/teorver2_4_1_2'>Teorver2_4_1_2</Link>
+          <Link to='/exponential-distribution_4_1_2'>Exponential-distribution _4_1_2</Link>
         </li>
         <li>
           <Link to='/normal-distribution'>Стандартное распределение</Link>

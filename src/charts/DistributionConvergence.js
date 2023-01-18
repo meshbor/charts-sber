@@ -115,7 +115,7 @@ function DistributionConvergence() {
         </div>
       </div>
       <div className='chart__control'>
-        <span>коэффициенты</span>
+        <span>Параметр</span>
         <div className='valueRange'>
           <span className='chart__value'>n = {nValue}</span>
           <input

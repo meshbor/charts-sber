@@ -99,26 +99,32 @@ function NormalDistribution() {
       <div className='chart__formula-description'>
         <div className='chart__formula'>
           <span style={{ fontSize: '18px' }}>
-            График Стандартного распределения
+            Выборка из стандартного нормального распределения
           </span>
           <div className='normal-distribution__info'>
             <div>
-              <span className='normal-distribution__red'>First </span>
+              <span className='normal-distribution__red'>
+                Первый элемент выборки{' '}
+              </span>
               <span>-0.3418921871695516</span>
             </div>
             <div>
-              <span className='normal-distribution__orange'>Minimum </span>
+              <span className='normal-distribution__orange'>
+                Минимальный элемент выборки{' '}
+              </span>
               <span>{min.current}</span>
             </div>
             <div>
-              <span className='normal-distribution__green'>Medium </span>
+              <span className='normal-distribution__green'>
+                Выборочное среднее{' '}
+              </span>
               <span>{medium.current}</span>
             </div>
           </div>
         </div>
       </div>
       <div className='chart__control value-up'>
-        <span>коэффициент</span>
+        <span>Размер выборки</span>
         <div className='valueRange'>
           <span className='chart__value'> n = {muValue}</span>
           <input
