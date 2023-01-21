@@ -8,9 +8,9 @@ function EpsilonScutter() {
   const [muValueDeb, setMuDeb] = useState('0.5');
 
   const generateData = useMemo(() => {
-    let data = [];
-    for (let i = 0; i < 10; i += 1) {
-      data.push([i, 3]);
+    let data = [[0, 0]];
+    for (let i = 1; i < 10; i += 1) {
+      data.push([i, 1 / i]);
     }
     return data;
   }, [muValue]);
@@ -21,15 +21,15 @@ function EpsilonScutter() {
       data.push([i, muValue]);
     }
     return data;
-  }
-  
+  };
+
   const generateDataLine2 = () => {
     let data = [];
     for (let i = 0; i < 10; i += 0.1) {
       data.push([i, -muValue]);
     }
     return data;
-  }
+  };
 
   useEffect(() => {
     let options = {
@@ -64,7 +64,14 @@ function EpsilonScutter() {
       series: [
         {
           // symbolSize: 10,
-          data: [[1, 1], [1, 1/2], [1, 1/3], [1, 1/4]],
+          // data: [
+          //   [0, 0],
+          //   [1, 1],
+          //   [2, 0.5],
+          //   [3, 0.33],
+          // ],
+          data: generateData,
+
           type: 'scatter',
           color: 'grey',
         },
@@ -101,9 +108,7 @@ function EpsilonScutter() {
     <div className='wrapper'>
       <div className='chart__formula-description'>
         <div className='chart__formula'>
-          <span style={{ fontSize: '18px' }}>
-            График 
-          </span>
+          <span style={{ fontSize: '18px' }}>График</span>
         </div>
       </div>
       <div className='chart__control value-up'>
@@ -119,7 +124,6 @@ function EpsilonScutter() {
             // defaultValue={1}
           />
         </div>
-      
       </div>
       <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
     </div>
