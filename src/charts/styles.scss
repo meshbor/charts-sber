@@ -21,6 +21,15 @@
     background: white;
     opacity: 0.9;
     font-family: cursive;
+    &__cos {
+      position: absolute;
+      left: 400px;
+    }
+    &__sin {
+      position: absolute;
+      left: 400px;
+      top: 270px;
+    }
     &.value-up {
       left: 450px;
       top: 130px;

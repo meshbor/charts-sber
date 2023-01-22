@@ -15,6 +15,8 @@ import Teorver_4_1_2 from './charts/Teorver_4_1_2';
 import NormalDistribution from './charts/NormalDistribution';
 import Teorver2_4_1_2 from './charts/Teorver2_4_1_2';
 import EpsilonScutter from './charts/EpsilonScutter';
+import Matan_4_2 from './charts/Matan_4_2';
+import Matan_Integral from './charts/Matan_Integral';
 
 
 export default function App() {
@@ -36,6 +38,9 @@ export default function App() {
       <Route path='exponential-distribution_4_1_2' element={<Teorver2_4_1_2 />} />
       <Route path='normal-distribution' element={<NormalDistribution />} />
       <Route path='epsilon-scutter' element={<EpsilonScutter />} />
+      <Route path='matan-4-2' element={<Matan_4_2 />} />
+      <Route path='matan_integral-10-4' element={<Matan_Integral />} />
+      
       <Route path='*' element={<NoMatch />} />
     </Routes>
   );

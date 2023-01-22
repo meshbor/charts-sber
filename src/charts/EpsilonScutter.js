@@ -8,8 +8,8 @@ function EpsilonScutter() {
   const [muValueDeb, setMuDeb] = useState('0.5');
 
   const generateData = useMemo(() => {
-    let data = [[0, 0]];
-    for (let i = 1; i < 10; i += 1) {
+    let data = [];
+    for (let i = 1; i < 20; i += 1) {
       data.push([i, 1 / i]);
     }
     return data;
@@ -17,7 +17,7 @@ function EpsilonScutter() {
 
   const generateDataLine = () => {
     let data = [];
-    for (let i = 0; i < 10; i += 0.1) {
+    for (let i = 0; i < 22; i += 0.1) {
       data.push([i, muValue]);
     }
     return data;
@@ -25,7 +25,7 @@ function EpsilonScutter() {
 
   const generateDataLine2 = () => {
     let data = [];
-    for (let i = 0; i < 10; i += 0.1) {
+    for (let i = 0; i < 22; i += 0.1) {
       data.push([i, -muValue]);
     }
     return data;
@@ -35,23 +35,29 @@ function EpsilonScutter() {
     let options = {
       tooltip: {
         trigger: 'axis',
-        formatter: (val) => val[0].value[0].toFixed(16),
+        formatter: (val) =>
+          ` x = ${val[0].value[0] !== 0 ? val[0].value[0].toFixed(2) : 'a'}`,
       },
-      xAxis: {},
+      xAxis: {
+        name: 'n',
+
+        max: 21,
+        axisLabel: {
+          show: true,
+        },
+      },
       yAxis: {
-        // min: -10,
-        // max: 10,
-        // axisLabel: {
-        //   show: false,
-        // },
+        name: '1/n',
+        min: -Number(muValue) * 2,
+        max: Number(muValue) * 2,
       },
       dataZoom: [
-        // {
-        //   show: true,
-        //   type: 'inside',
-        //   filterMode: 'none',
-        //   xAxisIndex: [0],
-        // },
+        {
+          show: true,
+          type: 'inside',
+          filterMode: 'none',
+          xAxisIndex: [0],
+        },
         {
           show: true,
           type: 'inside',
@@ -63,7 +69,7 @@ function EpsilonScutter() {
       ],
       series: [
         {
-          // symbolSize: 10,
+          symbolSize: 15,
           // data: [
           //   [0, 0],
           //   [1, 1],
@@ -73,7 +79,7 @@ function EpsilonScutter() {
           data: generateData,
 
           type: 'scatter',
-          color: 'grey',
+          color: '#000000',
         },
         {
           // symbolSize: 10,
@@ -91,6 +97,13 @@ function EpsilonScutter() {
           showSymbol: false,
           clip: true,
         },
+        {
+          symbolSize: 10,
+          data: [[0, 0]],
+          // data: generateData,
+          type: 'scatter',
+          color: 'green',
+        },
       ],
     };
     let chartDom = document.getElementById('echartsID');
@@ -107,25 +120,40 @@ function EpsilonScutter() {
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
-        <div className='chart__formula'>
-          <span style={{ fontSize: '18px' }}>График</span>
-        </div>
+        <div className='chart__formula'></div>
       </div>
-      <div className='chart__control value-up'>
-        <span>коэффициент</span>
+      <div
+        className='chart__control value-up'
+        style={{ top: '142px', gap: '5px' }}
+      >
+        <span>Значение эпсилон</span>
         <div className='valueRange'>
-          <span className='chart__value'> n = {muValue}</span>
+          <span className='chart__value'> ε = {muValue}</span>
           <input
             onChange={(event) => setMuDeb(event.target.value)}
             type='range'
             min='0'
             max='1'
             step='0.05'
-            // defaultValue={1}
+            defaultValue={0.5}
           />
         </div>
       </div>
-      <div style={{ width: '700px', height: '500px' }} id='echartsID'></div>
+
+      <div style={{ width: '700px', height: '500px' }} id='echartsID'>
+        <span
+          style={{
+            position: 'absolute',
+            top: '375px',
+            left: '67px',
+            zIndex: '110',
+            background: 'white',
+            width: '28px',
+          }}
+        >
+          a
+        </span>
+      </div>
     </div>
   );
 }
