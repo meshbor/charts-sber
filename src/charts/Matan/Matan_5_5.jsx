@@ -1,14 +1,16 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo, useCallback } from 'react';
+import useDebounce from '../../utilites/useDebounce';
 import '../styles.scss';
 
 function Matan_5_5() {
   const [aValue, setA] = useState(1);
   const [qValue, setQ] = useState(0.5);
+  const [aValueDebounce, setADebounce] = useState(1);
+  const [qValueDebounce, setQDebounce] = useState(0.5);
 
   const calculations = useCallback((a, q, x) => {
     const denominator = 1 - Math.pow(q, Math.ceil(x));
-    console.log(denominator);
     const numerator = 1 - q;
     const res = denominator / numerator;
     return res * a;
@@ -30,13 +32,15 @@ function Matan_5_5() {
     return data;
   }, [aValue, calculations, qValue]);
 
-  // const generateAsimptote = useMemo(() => {
-  //   let data = [];
-  //   for (let i = -2; i < 10; i += 0.5) {
-  //     data.push([i, calculations(aValue, qValue, i)]);
-  //   }
-  //   return data;
-  // }, [aValue, calculations, qValue]);
+  const debounceValueA = useDebounce(aValueDebounce, 200);
+  const debounceValueQ = useDebounce(qValueDebounce, 200);
+
+  useEffect(() => {
+    setA(debounceValueA);
+  }, [debounceValueA]);
+  useEffect(() => {
+    setQ(debounceValueQ);
+  }, [debounceValueQ]);
 
   useEffect(() => {
     let options = {
@@ -124,7 +128,7 @@ function Matan_5_5() {
         <div className='valueRange'>
           <span className='chart__value'> a = {aValue}</span>
           <input
-            onChange={(event) => setA(Number(event.target.value))}
+            onChange={(event) => setADebounce(Number(event.target.value))}
             type='range'
             min='-10'
             max='10'
@@ -135,7 +139,7 @@ function Matan_5_5() {
         <div className='valueRange'>
           <span className='chart__value'> q = {qValue}</span>
           <input
-            onChange={(event) => setQ(Number(event.target.value))}
+            onChange={(event) => setQDebounce(Number(event.target.value))}
             type='range'
             min='-1'
             max='1'
