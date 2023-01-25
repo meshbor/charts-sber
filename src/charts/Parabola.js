@@ -95,15 +95,16 @@ function Parabola() {
   };
   const showBValue = (value) => {
     const val = Number(value);
-    if (val > 0 && !Number(aValue)) return `${val} x`;
     if (val > 0) {
+      if (val === 1 && Number(aValue) === 0) return ' x';
+
       if (val === 1) return ' + x';
 
-      return `+ ${(val).toFixed(1)} × x`;
+      return `+ ${val.toFixed(1)} x`;
     } else if (val < 0) {
       if (val === -1) return ' − x';
 
-      return `− ${-1 * (val).toFixed(1)} × x`;
+      return `− ${-1 * val.toFixed(1)} x`;
     }
     return '';
   };
@@ -113,7 +114,7 @@ function Parabola() {
     if (val > 0) {
       return `${val} `;
     } else if (val < 0) {
-      if (val === -1) return `− `
+      if (val === -1) return `− `;
       return `− ${-1 * val} `;
     }
     return '';
@@ -125,7 +126,6 @@ function Parabola() {
     if (val > 0) {
       return ` + ${val} `;
     } else if (val < 0) {
-
       return ` - ${-1 * val} `;
     }
     return '';

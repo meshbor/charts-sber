@@ -3,6 +3,7 @@ import { React, useState, useRef, useEffect } from 'react';
 import './styles.scss';
 
 function func(x, s) {
+  console.log(s);
   return Number(Math.pow(x, s));
 }
 
@@ -12,9 +13,9 @@ function PowerFunction() {
     let data = [];
 
     // eslint-disable-next-line eqeqeq
-    const correctS = sValue == -2 ? -1.99 : sValue;
+    // const correctS = sValue == -2 ? -1.99 : sValue;
     for (let i = 0.01; i < 5; i += 0.01) {
-      data.push([i, func(i, correctS)]);
+      data.push([i, func(i, sValue)]);
     }
 
     return data;
@@ -25,7 +26,7 @@ function PowerFunction() {
     // eslint-disable-next-line eqeqeq
     const correctS = sValue == -2 ? -1.99 : sValue;
     for (let i = -5; i < 0; i += 0.01) {
-      data2.push([i, func(i, correctS)]);
+      data2.push([i, func(i, sValue)]);
     }
     return data2;
   };

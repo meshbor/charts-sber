@@ -1,6 +1,5 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo } from 'react';
-import useDebounce from '../utilites/useDebounce';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 
 import { Select } from 'antd';
@@ -135,8 +134,8 @@ function Matan_Integral() {
 
   return (
     <div className='wrapper'>
-      {/* <div className='chart__formula-description'>
-        <div className='chart__formula'></div>
+      {/* <div className='chart__formula-description fixed'>
+        <div className='chart__formula'>S = F</div>
       </div> */}
       <div
         className='chart__control value-up'
@@ -148,7 +147,7 @@ function Matan_Integral() {
           alignItems: 'center',
         }}
       >
-        <span style={{marginRight: '3px'}}>Граница </span>
+        <span style={{ marginRight: '3px' }}>Граница </span>
         <span className='chart__control__cos'>
           {' '}
           <MathJaxContext config={mathConfig}>

@@ -75,22 +75,6 @@ function Matan_4_2() {
         //   show: false,
         // },
       },
-      dataZoom: [
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          xAxisIndex: [0],
-        },
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          yAxisIndex: [0],
-          // startValue: -10,
-          // endValue: 10,
-        },
-      ],
       series: [
         {
           symbolSize: 15,

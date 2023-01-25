@@ -42,7 +42,9 @@ export default function Router() {
           <Link to='/normal-distribution_4_1_2'>normal-distribution 4_1_2</Link>
         </li>
         <li>
-          <Link to='/exponential-distribution_4_1_2'>Exponential-distribution _4_1_2</Link>
+          <Link to='/exponential-distribution_4_1_2'>
+            Exponential-distribution _4_1_2
+          </Link>
         </li>
         <li>
           <Link to='/normal-distribution'>Стандартное распределение</Link>
@@ -56,8 +58,9 @@ export default function Router() {
         <li>
           <Link to='/matan_integral-10-4'> matan_integral 10.4</Link>
         </li>
-        
-      
+        <li>
+          <Link to='/matan-5-5'> matan-5-5</Link>
+        </li>
         <li>
           <Link to='/router'>router</Link>
         </li>

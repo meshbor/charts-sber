@@ -114,7 +114,7 @@ function ExponentFunction() {
                 </span>
               }
             </span>
-            <span className=''>{' — степенная функция'}</span>
+            <span className=''>{' — показательная функция'}</span>
             {<sup className='show_white'>{aValue}</sup>}
           </div>
         ) : (

@@ -93,10 +93,10 @@ function StraightLine() {
     const val = Number(value);
     if (val > 0) {
       if (val === 1) return 'x';
-      return `${val.toFixed(1)} × x`;
+      return `${val.toFixed(1)} x`;
     } else if (val < 0) {
       if (val === -1) return '− x';
-      return `− ${-1 * val.toFixed(1)} × x`;
+      return `− ${-1 * val.toFixed(1)} x`;
     }
     return '';
   };
@@ -124,7 +124,7 @@ function StraightLine() {
               <span>{showkValue(kValue)}</span>
               <span>{showbValue(bValue)}</span>
             </div>
-            <span className=''>{' — прямая'}</span>
+            {/* <span className=''>{' — прямая'}</span> */}
           </>
         ) : (
           <div className='chart__formula'>
