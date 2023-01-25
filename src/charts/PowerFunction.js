@@ -3,7 +3,6 @@ import { React, useState, useRef, useEffect } from 'react';
 import './styles.scss';
 
 function func(x, s) {
-  console.log(s);
   return Number(Math.pow(x, s));
 }
 
