@@ -22,9 +22,6 @@ import Matan_5_5 from './charts/Matan/Matan_5_5';
 export default function App() {
   return (
     <>
-      <Link style={{ position: 'absolute' }} to='/'>
-        home
-      </Link>
       <Routes>
         <Route path='/' element={<Router />} />
         <Route path='router' element={<Router />} />
