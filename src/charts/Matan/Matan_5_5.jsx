@@ -1,9 +1,6 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo, useCallback } from 'react';
-import { Select } from 'antd';
-import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import '../styles.scss';
-import { mathConfig } from '../../constants/mathConfig';
 
 function Matan_5_5() {
   const [aValue, setA] = useState(1);
@@ -108,7 +105,7 @@ function Matan_5_5() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
-  }, [generateData, aValue]);
+  }, [generateData, aValue, calculateAsipmtote]);
 
   return (
     <div className='wrapper'>
@@ -121,7 +118,7 @@ function Matan_5_5() {
       </div>
       <div
         className='chart__control value-down'
-        style={{ top: '142px', gap: '5px' }}
+        style={{ top: '63px', left: '111px', gap: '5px' }}
       >
         <span>Параметры a и q</span>
         <div className='valueRange'>
