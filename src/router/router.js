@@ -59,7 +59,7 @@ export default function Router() {
           <Link to='/matan_integral-10-4'> matan_integral 10.4</Link>
         </li>
         <li>
-          <Link to='/matan-5-5'> matan-5-5</Link>
+          <Link to='/matan-6-5'> matan-6-5</Link>
         </li>
         <li>
           <Link to='/router'>router</Link>

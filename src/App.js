@@ -17,7 +17,7 @@ import Teorver2_4_1_2 from './charts/Teorver2_4_1_2';
 import EpsilonScutter from './charts/EpsilonScutter';
 import Matan_4_2 from './charts/Matan_4_2';
 import Matan_Integral from './charts/Matan_Integral';
-import Matan_5_5 from './charts/Matan/Matan_5_5';
+import Matan_6_5 from './charts/Matan/Matan_6_5';
 
 export default function App() {
   return (
@@ -47,7 +47,7 @@ export default function App() {
         <Route path='epsilon-scutter' element={<EpsilonScutter />} />
         <Route path='matan-4-2' element={<Matan_4_2 />} />
         <Route path='matan_integral-10-4' element={<Matan_Integral />} />
-        <Route path='matan-5-5' element={<Matan_5_5 />} />
+        <Route path='matan-6-5' element={<Matan_6_5 />} />
 
         
         <Route path='*' element={<NoMatch />} />

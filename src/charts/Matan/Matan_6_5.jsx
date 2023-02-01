@@ -3,7 +3,7 @@ import { React, useState, useEffect, useMemo, useCallback } from 'react';
 import useDebounce from '../../utilites/useDebounce';
 import '../styles.scss';
 
-function Matan_5_5() {
+function Matan_6_5() {
   const [aValue, setA] = useState(1);
   const [qValue, setQ] = useState(0.5);
   const [aValueDebounce, setADebounce] = useState(1);
@@ -153,4 +153,4 @@ function Matan_5_5() {
   );
 }
 
-export default Matan_5_5;
+export default Matan_6_5;
