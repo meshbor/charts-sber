@@ -139,7 +139,7 @@ function Matan_4_2() {
             min='1'
             max='7'
             step='0.5'
-            defaultValue='3'
+            defaultValue='1'
           />
         </div>
         <div className='valueRange'>
