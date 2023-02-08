@@ -22,7 +22,7 @@ function Teorver631() {
   }, []);
   const generateWeibull2 = useMemo(() => {
     let data = [];
-    for (let i = aValue; i < 80; i += 0.5) {
+    for (let i = aValue; i < 70; i += 0.5) {
       const i20 = Number((i / 20).toFixed(3));
       const up1 = i20 * 0.1 * Math.exp(-1 * Math.pow(i20, 2));
       data.push([i, up1]);
@@ -65,24 +65,24 @@ function Teorver631() {
         // min: -1.5,
         // max: 1.5,
       },
-      dataZoom: [
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          xAxisIndex: [0],
-          // startValue: -20,
-          // endValue: 20,
-        },
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          yAxisIndex: [0],
-          // startValue: -20,
-          // endValue: 20,
-        },
-      ],
+      // dataZoom: [
+      //   {
+      //     show: true,
+      //     type: 'inside',
+      //     filterMode: 'none',
+      //     xAxisIndex: [0],
+      //     // startValue: -20,
+      //     // endValue: 20,
+      //   },
+      //   {
+      //     show: true,
+      //     type: 'inside',
+      //     filterMode: 'none',
+      //     yAxisIndex: [0],
+      //     // startValue: -20,
+      //     // endValue: 20,
+      //   },
+      // ],
       visualMap: {
         type: 'piecewise',
         show: false,
@@ -161,6 +161,13 @@ function Teorver631() {
           <div className='second'></div>
         </div>
       </div>
+      <span className='desc__formula1'>
+        p (x|H<sub>0</sub>)
+      </span>
+      <span className='desc__formula2'>
+        p (x|H<sub>1</sub>)
+      </span>
+
       <div className='chart__control value-up'>
         <span>Параметр</span>
         <div className='valueRange'>
@@ -168,8 +175,8 @@ function Teorver631() {
           <input
             onChange={(event) => setADebounce(Number(event.target.value))}
             type='range'
-            min='0'
-            max='50'
+            min='1'
+            max='80'
             step='0.5'
             defaultValue={25}
           />

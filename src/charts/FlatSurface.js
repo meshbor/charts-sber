@@ -77,6 +77,7 @@ function FlatSurface() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return ()=> myChart.dispose()
   }, []);
 
   return (
