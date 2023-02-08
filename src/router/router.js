@@ -71,6 +71,9 @@ export default function Router() {
           <Link to='/teorver-6-3-1'>teorver-6-3-1</Link>
         </li>
         <li>
+          <Link to='/teorver-3-3-1'>Teorver331</Link>
+        </li>
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>

@@ -125,7 +125,7 @@ function Teorver_4_1_2() {
     <div className='wrapper'>
       <div className='chart__formula-description'>
         <div className='chart__formula'>
-          <span style={{fontSize: '18px'}}>
+          <span style={{ fontSize: '18px' }}>
             <MathJaxContext config={config}>
               <MathJax>
                 График{' '}
@@ -137,7 +137,7 @@ function Teorver_4_1_2() {
           </span>
         </div>
       </div>
-      <div className='chart__control value-up'>
+      <div className='chart__control value-up' style={{ top: '37px' }}>
         <span>Параметры</span>
         <div className='valueRange'>
           <span className='chart__value'> μ = {muValue}</span>

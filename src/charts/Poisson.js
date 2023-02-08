@@ -21,7 +21,7 @@ function generateData(alpha) {
   return data;
 }
 function Poisson() {
-  const [alpha, setP] = useState(1);
+  const [alpha, setP] = useState(15);
 
   const notNullSum = useRef(false);
 
@@ -51,8 +51,8 @@ function Poisson() {
     },
     yAxis: {
       name: 'y',
-      // min: -10,
-      // max: 5,
+      min: 0,
+      max: alpha < 0.9 ? 1 : 0.5,
       minorTick: {
         show: true,
       },
@@ -92,7 +92,7 @@ function Poisson() {
             min='0.1'
             max='20'
             step='0.1'
-            defaultValue='1'
+            defaultValue='15'
           />
         </div>
       </div>

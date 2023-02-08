@@ -16,13 +16,13 @@ function NormalDistribution() {
 
   const generateData = useMemo(() => {
     let data = [];
+    let tempMin = 100;
     for (let i = 1; i < muValue; i += 1) {
       data.push([distributionNormal[i], 2]);
-      if (min.current > distributionNormal[i]) {
-        min.current = distributionNormal[i];
-      }
+      tempMin = Math.min(tempMin, distributionNormal[i]);
       medium.current = distributionMedium[i];
     }
+    min.current = tempMin;
     return data;
   }, [muValue]);
 
@@ -130,7 +130,7 @@ function NormalDistribution() {
           <input
             onChange={(event) => setMuDeb(event.target.value)}
             type='range'
-            min='1'
+            min='3'
             max='10000'
             step='1'
             // defaultValue={1}

@@ -1,6 +1,5 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo } from 'react';
-import { Select } from 'antd';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import './styles.scss';
 import { mathConfig } from '../constants/mathConfig';
@@ -12,14 +11,6 @@ function Matan_4_2() {
 
   const changeAvalue = (e) => setA(Number(e.target.value));
   const changeBvalue = (e) => setB(Number(e.target.value));
-
-  const generateData = useMemo(() => {
-    let data = [[0, 0]];
-    for (let i = 1; i < 20; i += 0.1) {
-      data.push([i, 1 / i]);
-    }
-    return data;
-  }, []);
 
   const generateHyperbola = useMemo(() => {
     let data = [];

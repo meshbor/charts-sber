@@ -6,24 +6,17 @@ function func(x, s) {
   return Number(Math.pow(x, s));
 }
 
-function PowerFunction() {
+function PowerFunction({step = 0.1}) {
   const [sValue, setS] = useState(3);
   const generateData = (sValue) => {
     let data = [];
-
-    // eslint-disable-next-line eqeqeq
-    // const correctS = sValue == -2 ? -1.99 : sValue;
     for (let i = 0.01; i < 5; i += 0.01) {
       data.push([i, func(i, sValue)]);
     }
-
     return data;
   };
   const generateData2 = (sValue) => {
     let data2 = [];
-
-    // eslint-disable-next-line eqeqeq
-    const correctS = sValue == -2 ? -1.99 : sValue;
     for (let i = -5; i < 0; i += 0.01) {
       data2.push([i, func(i, sValue)]);
     }
@@ -32,7 +25,7 @@ function PowerFunction() {
 
   const notNullSum = useRef(false);
 
-  const changeSvalue = (e) => setS(e.target.value || -2);
+  const changeSvalue = (e) => setS(Number(e.target.value));
 
   useEffect(() => {
     let options = {
@@ -138,12 +131,12 @@ function PowerFunction() {
         ) : (
           <div className='chart__formula'>
             <span className='chart__title-name'>График </span>
-            <span className=''>y = 0</span>
+            <span className=''>y = 1</span>
           </div>
         )}
       </div>
       <div className='chart__control'>
-        <span>коэффициенты</span>
+        <span>Показатель степени</span>
         <div className='valueRange'>
           <span className='chart__value'>s = {sValue}</span>
           <input
@@ -151,7 +144,7 @@ function PowerFunction() {
             type='range'
             min='-3'
             max='3'
-            step='0.1'
+            step={step}
             defaultValue='3'
           />
         </div>
