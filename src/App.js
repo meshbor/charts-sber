@@ -19,6 +19,7 @@ import Matan_4_2 from './charts/Matan_4_2';
 import Matan_Integral from './charts/Matan_Integral';
 import Matan_6_5 from './charts/Matan/Matan_6_5';
 import Matan_10_1 from './charts/Matan/Matan_10_1';
+import TeorverStrings from './charts/Teorver/TeorverStrings';
 
 export default function App() {
   return (
@@ -50,9 +51,7 @@ export default function App() {
         <Route path='matan_integral-10-4' element={<Matan_Integral />} />
         <Route path='matan-6-5' element={<Matan_6_5 />} />
         <Route path='matan-10-1' element={<Matan_10_1 />} />
-
-
-        
+        <Route path='teorver-strings' element={<TeorverStrings />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </>

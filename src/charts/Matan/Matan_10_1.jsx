@@ -94,12 +94,6 @@ function Matan_10_1() {
           data: [[0.2,0.2], [2,1]],
           type: 'bar'
         },
-        // {
-        //   data: [[0, -1]],
-        //   symbolSize: 10,
-        //   type: 'scatter',
-        //   color: 'red',
-        // },
       ],
     };
 
