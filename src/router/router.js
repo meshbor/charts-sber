@@ -68,6 +68,9 @@ export default function Router() {
           <Link to='/teorver-strings'>teorver-5-2-2</Link>
         </li>
         <li>
+          <Link to='/teorver-6-3-1'>teorver-6-3-1</Link>
+        </li>
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>

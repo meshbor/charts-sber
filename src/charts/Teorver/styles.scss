@@ -1,0 +1,27 @@
+.charts {
+  &__description {
+    position: absolute;
+    top: 20px;
+    left: 105px;
+    font-family: cursive;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &__item {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+}
+.first {
+  width: 40px;
+  height: 23px;
+  background-color: blue;
+  border-radius: 16px;
+}
+.second {
+  border-radius: 16px;
+  width: 40px;
+  height: 23px;
+  background-color: #d24848;
+}
