@@ -13,6 +13,18 @@
       gap: 0.5rem;
     }
   }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: cursive;
+    padding: 0 0 0 30px;
+    > .valueRange {
+      display: flex;
+      align-items: center;
+      max-height: 35px;
+    }
+  }
 }
 .first {
   width: 40px;
@@ -41,4 +53,8 @@
   left: 365px;
   color: blue;
   z-index: 10;
+}
+.input-teorver {
+  width: 90px;
+  height: 35px;
 }

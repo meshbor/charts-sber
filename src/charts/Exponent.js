@@ -40,7 +40,6 @@ function ExponentFunction() {
         max: 5,
         minorTick: {
           show: true,
-          // splitNumber: 1,
         },
         minorSplitLine: {
           show: true,
@@ -98,6 +97,7 @@ function ExponentFunction() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [aValue]);
 
   return (

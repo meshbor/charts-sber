@@ -100,6 +100,7 @@ function Matan_10_1() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, aValue, calculateAsipmtote]);
 
   return (

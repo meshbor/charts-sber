@@ -97,6 +97,7 @@ function DistributionConvergence() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, nValue]);
 
   const config = {

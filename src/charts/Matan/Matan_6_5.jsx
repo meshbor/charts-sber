@@ -44,18 +44,12 @@ function Matan_6_5() {
 
   useEffect(() => {
     let options = {
-      // tooltip: {
-      //   // trigger: 'axis',
-      // },
       xAxis: {
-        // max: 5,
         axisLabel: {
           show: true,
         },
       },
       yAxis: {
-        // min: -calculateAsipmtote * 2,
-        // max: calculateAsipmtote * 2,
       },
       dataZoom: [
         {
@@ -90,25 +84,13 @@ function Matan_6_5() {
           animation: false,
           step: 'start',
         },
-
-        // {
-        //   data: [aValue !== Math.PI ? [aValue, 0] : [aValue, 1]],
-        //   symbolSize: 10,
-        //   type: 'scatter',
-        //   color: 'red',
-        // },
-        // {
-        //   data: [[0, -1]],
-        //   symbolSize: 10,
-        //   type: 'scatter',
-        //   color: 'red',
-        // },
       ],
     };
 
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, aValue, calculateAsipmtote]);
 
   return (

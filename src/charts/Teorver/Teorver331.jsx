@@ -1,27 +1,11 @@
+import { Input } from 'antd';
 import * as echarts from 'echarts';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.scss';
 
-function func(x, k, b) {
-  let res2 = k * x;
-  const res4 = Number(res2) + Number(b);
-  return res4;
-}
-function generateData(xValue, yValue) {
-  let data = [[0, 0]];
-  // for (let i = -200; i <= 200; i += 0.1) {
-  data.push([xValue, yValue]);
-  // }
-  return data;
-}
-
 function Teorver331() {
-  const [xValue, setX] = useState(1);
-  const [yValue, setY] = useState(0);
-  const nullSum = useRef(false);
-
-  const changexvalue = (e) => setX(e.target.value || 0);
-  const changeyvalue = (e) => setY(e.target.value || 0);
+  const [xValue, setX] = useState(4);
+  const [yValue, setY] = useState(4);
 
   useEffect(() => {
     let options = {
@@ -34,8 +18,9 @@ function Teorver331() {
       },
       xAxis: {
         name: 'x',
-        min: -10,
-        max: 10,
+        min: -5,
+        max: 5,
+
         minorTick: {
           show: true,
         },
@@ -43,6 +28,7 @@ function Teorver331() {
           show: true,
         },
         axisLine: {
+          symbol: ['none', 'arrow'],
           lineStyle: {
             width: '1.5',
           },
@@ -50,8 +36,8 @@ function Teorver331() {
       },
       yAxis: {
         name: 'y',
-        min: -10,
-        max: 10,
+        min: -5,
+        max: 5,
         minorTick: {
           show: true,
         },
@@ -84,89 +70,76 @@ function Teorver331() {
       ],
       series: [
         {
+          data: [
+            {
+              coords: [
+                [0, 0],
+                [xValue, yValue],
+              ],
+            },
+            {
+              coords: [
+                [0, 0],
+                [0, 1],
+              ],
+            },
+            {
+              coords: [
+                [0, 0],
+                [1, 0],
+              ],
+            },
+          ],
           type: 'lines',
+          coordinateSystem: 'cartesian2d',
+          symbol: ['none', 'arrow'],
           color: 'blue',
-          showSymbol: false,
-          symbolSize: 10,
-          symbolRotate: 45,
-          itemStyle: {
-            symbol: 'arrow',
-            decal: {
-              symbol: 'arrow'
-            }
-          },
-          // symbol: 'arrow',
-          // markPoint: {
-          //   symbol: 'arrow',
-          //   data: [
-          //     {
-          //       name: 'coordinate',
-          //       coord: [xValue, yValue],
-          //       symbol: 'arrow',
-          //       symbolSize: 10,
-          //       symbolRotate: Math.cos(xValue, yValue) * xValue * yValue,
-          //     },
-          //     // {
-          //     //     name: 'coordinate',
-          //     //     coord: [10, 20]
-          //     // }, {
-          //     //     name: 'fixed x position',
-          //     //     yAxis: 10,
-          //     //     x: '90%'
-          //     // },
-
-          //     // {
-          //     //     name: 'screen coordinate',
-          //     //     x: 100,
-          //     //     y: 100
-          //     // }
-          //   ],
-          // },
-          // clip: true,
-          data: generateData(xValue, yValue),
+          lineStyle:{
+            width: 2
+          }
         },
       ],
     };
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
-  }, [generateData, xValue, yValue]);
+    return () => myChart.dispose();
+  }, [xValue, yValue]);
 
-  nullSum.value = Number(xValue) === 0 && Number(yValue) === 0;
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'></div>
-      <div>
+      <div className='charts__info'>
         <div className='valueRange'>
-          <span className='chart__value chart__formula-description'>
-            {' '}
+          <span className='chart__value '>
             Компонента x{' '}
           </span>
-          <input
-            onChange={(event) => setX(event.target.value)}
+          <Input
+            onChange={(event) => setX(Number(event.target.value))}
             type='number'
             min='-20'
             max='20'
             step='0.5'
-            defaultValue={1}
+            defaultValue={4}
+            className='input-teorver'
           />
         </div>
         <div className='valueRange'>
-          <span className='chart__value chart__formula-description'>
-            {' '}
+          <span className='chart__value '>
             Компонента y{' '}
           </span>
-          <input
-            onChange={(event) => setY(event.target.value)}
+          <Input
+            onChange={(event) => setY(Number(event.target.value))}
             type='number'
             min='-20'
             max='20'
             step='0.5'
-            defaultValue={1}
+            defaultValue={4}
+            className='input-teorver'
           />
         </div>
-        <div className='chart__formula-description'>
+        <div className=''>
           cov(X, {xValue} X + {yValue} Y) = {xValue}
         </div>
       </div>

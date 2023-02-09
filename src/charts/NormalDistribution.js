@@ -86,6 +86,7 @@ function NormalDistribution() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, muValue, medium]);
 
   const debounceValueMu = useDebounce(muValueDeb, 100);

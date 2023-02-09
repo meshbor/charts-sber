@@ -130,13 +130,11 @@ function Matan_Integral() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, aValue, generateDataSin]);
 
   return (
     <div className='wrapper'>
-      {/* <div className='chart__formula-description fixed'>
-        <div className='chart__formula'>S = F</div>
-      </div> */}
       <div
         className='chart__control value-up'
         style={{

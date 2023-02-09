@@ -107,6 +107,7 @@ function PowerFunction({step = 0.1}) {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [sValue]);
 
   notNullSum.value = Number(sValue) !== 0;

@@ -97,6 +97,7 @@ function Teorver2_4_1_2() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, lambdaValue]);
 
   const config = {

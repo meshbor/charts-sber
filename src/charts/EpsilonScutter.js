@@ -70,19 +70,11 @@ function EpsilonScutter() {
       series: [
         {
           symbolSize: 15,
-          // data: [
-          //   [0, 0],
-          //   [1, 1],
-          //   [2, 0.5],
-          //   [3, 0.33],
-          // ],
           data: generateData,
-
           type: 'scatter',
           color: '#000000',
         },
         {
-          // symbolSize: 10,
           data: generateDataLine(),
           type: 'line',
           color: 'blue',
@@ -90,7 +82,6 @@ function EpsilonScutter() {
           clip: true,
         },
         {
-          // symbolSize: 10,
           data: generateDataLine2(),
           type: 'line',
           color: 'blue',
@@ -100,7 +91,6 @@ function EpsilonScutter() {
         {
           symbolSize: 10,
           data: [[0, 0]],
-          // data: generateData,
           type: 'scatter',
           color: 'green',
         },
@@ -109,6 +99,7 @@ function EpsilonScutter() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
+    return () => myChart.dispose();
   }, [generateData, muValue]);
 
   const debounceValueMu = useDebounce(muValueDeb, 100);
