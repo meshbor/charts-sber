@@ -147,15 +147,18 @@ function Matan_Integral() {
       >
         <span style={{ marginRight: '3px' }}>Граница </span>
         <span className='chart__control__cos'>
-          {' '}
           <MathJaxContext config={mathConfig}>
             <MathJax> {'`F(x) = -cos(x)`'}</MathJax>
           </MathJaxContext>
         </span>
         <span className='chart__control__sin'>
-          {' '}
           <MathJaxContext config={mathConfig}>
-            <MathJax> {'`F(x) = sin(x)`'}</MathJax>
+            <MathJax> {'`f(x) = sin(x)`'}</MathJax>
+          </MathJaxContext>
+        </span>
+        <span className='chart__formula-integral'>
+          <MathJaxContext config={mathConfig}>
+            <MathJax> {'`int_a^b f(x)dx = F(b) - F(a)`'}</MathJax>
           </MathJaxContext>
         </span>
         <div className='valueRange'>
@@ -174,7 +177,6 @@ function Matan_Integral() {
           </div>
         </div>
       </div>
-
       <div style={{ width: '700px', height: '450px' }} id='echartsID'></div>
       <div
         style={{

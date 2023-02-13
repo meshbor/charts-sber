@@ -58,6 +58,10 @@
     min-height: 40px;
     padding: 0 0 0 30px;
   }
+  &__formula-integral {
+    top: -80px;
+    position: absolute;
+  }
   &__value {
     min-width: 60px;
     &.value-up {

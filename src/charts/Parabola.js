@@ -99,8 +99,9 @@ function Parabola() {
       if (val === 1 && Number(aValue) === 0) return ' x';
 
       if (val === 1) return ' + x';
+      const sign = Number(aValue) === 0 ? '' : '+'
 
-      return `+ ${val.toFixed(1)} x`;
+      return `${sign} ${val.toFixed(1)} x`;
     } else if (val < 0) {
       if (val === -1) return ' − x';
 

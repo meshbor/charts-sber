@@ -6,7 +6,7 @@ function func(x, s) {
   return Number(Math.pow(x, s));
 }
 
-function PowerFunction({step = 0.1}) {
+function PowerFunction({ step = 0.1 }) {
   const [sValue, setS] = useState(3);
   const generateData = (sValue) => {
     let data = [];
@@ -122,7 +122,7 @@ function PowerFunction({step = 0.1}) {
             <span className=''>
               {
                 <span className='show'>
-                  x<sup>{sValue}</sup>
+                  x<sup>{sValue !== 1 && sValue}</sup>
                 </span>
               }
             </span>
