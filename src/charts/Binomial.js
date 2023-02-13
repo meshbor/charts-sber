@@ -61,8 +61,8 @@ function Binomial() {
     },
     yAxis: {
       name: 'y',
-      min: -0.2,
-      max: pValue < 0.3 ? 1 : 0.5,
+      min:  nValue <=6 ? -0.4 : -0.2,
+      max: nValue > 6 ? 0.5 : 1,
       minorTick: {
         show: true,
       },

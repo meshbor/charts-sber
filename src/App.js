@@ -22,6 +22,7 @@ import Matan_10_1 from './charts/Matan/Matan_10_1';
 import TeorverStrings from './charts/Teorver/TeorverStrings';
 import Teorver631 from './charts/Teorver/Teorver631';
 import Teorver331 from './charts/Teorver/Teorver331';
+import Teorver621 from './charts/Teorver/Teorver621';
 
 export default function App() {
   return (
@@ -57,7 +58,7 @@ export default function App() {
         <Route path='teorver-6-3-1' element={<Teorver631 />} />
         <Route path='teorver-3-3-1' element={<Teorver331 />} />
         <Route path='matan-2-3' element={<PowerFunction step={1} />} />
-
+        <Route path='teorver-6-2-1' element={<Teorver621 />} />
 
         <Route path='*' element={<NoMatch />} />
       </Routes>

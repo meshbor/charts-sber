@@ -1,31 +1,49 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo } from 'react';
 import '../styles.scss';
-import { yData_522, xData_522, strings_522 } from './constants';
+import {
+  pointsX,
+  initial_distribution_pd_621,
+  norm_distribution_pdf_621,
+} from './constants';
 
-function TeorverStrings() {
+// @ya_rovikov - initiator
+function Teorver621() {
   const [nValue, setS] = useState(1);
+  const [quantileValue, setQuantileValue] = useState(1.01522203);
 
-  const generateData = useMemo(() => {
+  const generateNormalDistr = useMemo(() => {
     let data = [];
+    let dataX = norm_distribution_pdf_621[0];
+    let dataY = norm_distribution_pdf_621[1];
 
-    for (let i = 0; i < yData_522.length; i++) {
-      data.push([xData_522[i], yData_522[i]]);
+    for (let i = 0; i < dataX.length; i += 1) {
+      data.push([dataX[i], dataY[i]]);
     }
     return data;
   }, []);
-  const generateDataStrings = useMemo(() => {
-    let data = [];
-    let dataX = strings_522[nValue - 1][0];
-    let dataY = strings_522[nValue - 1][1];
 
-    for (let i = 0; i < dataX.length; i += 1) {
-      data.push([dataX[i], dataY[i] ?? 0]);
-      dataX[i + 1] !== undefined && data.push([dataX[i + 1], dataY[i] ?? 0]);
-      data.push(null);
+  const generateInterval = useMemo(() => {
+    const res = quantileValue / 3.16227766;
+    const point1 = 10.05 - res;
+    const point2 = 10.05 + res;
+    return [
+      [point1, -0.5],
+      [point2, -0.5],
+    ];
+  }, [quantileValue]);
+
+  const generateInitialDist = useMemo(() => {
+    let data = [];
+    for (let i = 0; i < initial_distribution_pd_621.length; i += 1) {
+      // console.log(initial_distribution_pd_621[i]);
+      data.push([
+        initial_distribution_pd_621[i],
+        initial_distribution_pd_621[i],
+      ]);
     }
     return data;
-  }, [nValue]);
+  }, []);
 
   const changeNvalue = (e) => setS(e.target.value);
 
@@ -40,8 +58,8 @@ function TeorverStrings() {
       },
       xAxis: {
         name: 'x',
-        min: -5,
-        max: 5,
+        // min: -5,
+        // max: 5,
         minorTick: {
           show: true,
           // splitNumber: 1,
@@ -58,8 +76,8 @@ function TeorverStrings() {
       },
       yAxis: {
         name: 'y',
-        min: -0.5,
-        max: 1.5,
+        // min: -0.5,
+        // max: 1.5,
         minorTick: {
           show: true,
         },
@@ -96,14 +114,46 @@ function TeorverStrings() {
           color: 'blue',
           showSymbol: false,
           // clip: true,
-          data: generateData,
+          data: generateNormalDistr,
+        },
+        {
+          symbolSize: 10,
+          data: pointsX,
+          type: 'scatter',
+          color: 'blue',
+        },
+        {
+          // symbolSize: 10,
+          data: generateInterval,
+          type: 'line',
+          color: 'red',
+        },
+        {
+          // symbolSize: 10,
+          showSymbol: false,
+          data: [
+            [10, -10],
+            [10, 10],
+          ],
+          type: 'line',
+          color: 'blue',
+        },
+        {
+          // symbolSize: 10,
+          showSymbol: false,
+          data: [
+            [10.5, -10],
+            [10.5, 10],
+          ],
+          type: 'line',
+          color: 'green',
         },
         {
           type: 'line',
-          color: 'red',
+          color: 'blue',
           showSymbol: false,
-          clip: false,
-          data: generateDataStrings,
+          // clip: true,
+          data: generateInitialDist,
         },
       ],
     };
@@ -111,17 +161,13 @@ function TeorverStrings() {
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
     return () => myChart.dispose();
-  }, [generateData, generateDataStrings]);
-
-  const config = {
-    loader: { load: ['input/asciimath'] },
-  };
+  }, [generateInitialDist, generateInterval, generateNormalDistr]);
 
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'>
         <div className='chart__formula'>
-          <span>Центральная предельная теорема</span>
+          <span>График</span>
         </div>
       </div>
       <div className='chart__control'>
@@ -143,4 +189,4 @@ function TeorverStrings() {
   );
 }
 
-export default TeorverStrings;
+export default Teorver621;
