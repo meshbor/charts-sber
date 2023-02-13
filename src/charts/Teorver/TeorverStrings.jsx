@@ -1,10 +1,9 @@
-import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import * as echarts from 'echarts';
-import { React, useState, useEffect, useCallback, useMemo } from 'react';
+import { React, useState, useEffect, useMemo } from 'react';
 import '../styles.scss';
 import { yData_522, xData_522, strings_522 } from './constants';
 
-function DistributionConvergence() {
+function TeorverSti() {
   const [nValue, setS] = useState(1);
 
   const generateData = useMemo(() => {
@@ -20,9 +19,9 @@ function DistributionConvergence() {
     let dataX = strings_522[nValue - 1][0];
     let dataY = strings_522[nValue - 1][1];
 
-    for (let i = 0; i < dataX.length; i += 2) {
-      data.push([dataX[i], dataY[i - 1] ?? 0]);
-      dataX[i + 1] && data.push([dataX[i + 1], dataY[i - 1] ?? 0]);
+    for (let i = 0; i < dataX.length; i += 1) {
+      data.push([dataX[i], dataY[i] ?? 0]);
+      dataX[i + 1] !== undefined && data.push([dataX[i + 1], dataY[i] ?? 0]);
       data.push(null);
     }
     return data;
@@ -111,8 +110,7 @@ function DistributionConvergence() {
     let chartDom = document.getElementById('echartsID');
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
-    return () => myChart.dispose()
-
+    return () => myChart.dispose();
   }, [generateData, generateDataStrings]);
 
   const config = {
@@ -145,4 +143,4 @@ function DistributionConvergence() {
   );
 }
 
-export default DistributionConvergence;
+export default TeorverSti;
