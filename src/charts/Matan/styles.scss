@@ -1,0 +1,60 @@
+.charts {
+  &__description {
+    position: absolute;
+    top: 500px;
+    left: 105px;
+    font-family: cursive;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &__item {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: cursive;
+    padding: 0 0 0 30px;
+    > .valueRange {
+      display: flex;
+      align-items: center;
+      max-height: 35px;
+    }
+  }
+}
+.first {
+  width: 40px;
+  height: 17px;
+  background-color: blue;
+  border-radius: 16px;
+}
+.second {
+  border-radius: 16px;
+  width: 40px;
+  height: 17px;
+  background-color: #d24848;
+}
+.desc__formula1 {
+  font-family: cursive;
+  position: absolute;
+  top: 125px;
+  left: 180px;
+  color: #d24848;
+  z-index: 10;
+}
+.desc__formula2 {
+  font-family: cursive;
+  position: absolute;
+  top: 215px;
+  left: 365px;
+  color: blue;
+  z-index: 10;
+}
+.input-teorver {
+  width: 90px;
+  height: 35px;
+}

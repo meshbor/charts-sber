@@ -2,6 +2,8 @@ import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo, useCallback } from 'react';
 import useDebounce from '../../utilites/useDebounce';
 import '../styles.scss';
+import s from  './styles.module.scss';
+
 
 function Matan_6_5() {
   const [aValue, setA] = useState(1);
@@ -45,6 +47,7 @@ function Matan_6_5() {
   useEffect(() => {
     let options = {
       xAxis: {
+        name: 'k',
         axisLabel: {
           show: true,
         },
@@ -102,10 +105,14 @@ function Matan_6_5() {
           </MathJaxContext> */}
         </div>
       </div>
+      <span className={s.axis}>
+        S<sub>k</sub>
+      </span>
       <div
         className='chart__control value-down'
-        style={{ top: '63px', left: '111px', gap: '5px' }}
+        style={{ top: '63px', left: '464px', gap: '5px' }}
       >
+          
         <span>Параметры a и q</span>
         <div className='valueRange'>
           <span className='chart__value'> a = {aValue}</span>

@@ -101,11 +101,11 @@ function Parabola() {
       if (val === 1) return ' + x';
       const sign = Number(aValue) === 0 ? '' : '+'
 
-      return `${sign} ${val.toFixed(1)} x`;
+      return `${sign} ${val} x`;
     } else if (val < 0) {
       if (val === -1) return ' − x';
 
-      return `− ${-1 * val.toFixed(1)} x`;
+      return `− ${-1 * val} x`;
     }
     return '';
   };

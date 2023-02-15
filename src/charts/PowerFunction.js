@@ -6,7 +6,7 @@ function func(x, s) {
   return Number(Math.pow(x, s));
 }
 
-function PowerFunction({ step = 0.1 }) {
+function PowerFunction({ step, min, max }) {
   const [sValue, setS] = useState(3);
   const generateData = (sValue) => {
     let data = [];
@@ -143,8 +143,8 @@ function PowerFunction({ step = 0.1 }) {
           <input
             onChange={(event) => changeSvalue(event)}
             type='range'
-            min='-3'
-            max='3'
+            min={min}
+            max={max}
             step={step}
             defaultValue='3'
           />

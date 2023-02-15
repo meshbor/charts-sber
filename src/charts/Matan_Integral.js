@@ -157,9 +157,16 @@ function Matan_Integral() {
           </MathJaxContext>
         </span>
         <span className='chart__formula-integral'>
-          <MathJaxContext config={mathConfig}>
-            <MathJax> {'`int_a^b f(x)dx = F(b) - F(a)`'}</MathJax>
-          </MathJaxContext>
+          {aValue === Math.PI && (
+            <MathJaxContext config={mathConfig}>
+              <MathJax> {'`int_0^π f(x)dx = F(π) - F(0) = 2`'}</MathJax>
+            </MathJaxContext>
+          )}
+          {aValue !== Math.PI && (
+            <MathJaxContext config={mathConfig}>
+              <MathJax> {'`int_0^(π/2) f(x)dx = F(π/2) - F(0) = 1`'}</MathJax>
+            </MathJaxContext>
+          )}
         </span>
         <div className='valueRange'>
           <div className='valueRange'>

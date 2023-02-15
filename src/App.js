@@ -23,6 +23,7 @@ import TeorverStrings from './charts/Teorver/TeorverStrings';
 import Teorver631 from './charts/Teorver/Teorver631';
 import Teorver331 from './charts/Teorver/Teorver331';
 import Teorver621 from './charts/Teorver/Teorver621';
+import Matan102 from './charts/Matan/Matan_10_2';
 
 export default function App() {
   return (
@@ -32,7 +33,7 @@ export default function App() {
         <Route path='router' element={<Router />} />
         <Route path='line' element={<StraightLine />} />
         <Route path='parabola' element={<Parabola />} />
-        <Route path='power' element={<PowerFunction step={0.01} />} />
+        <Route path='power' element={<PowerFunction step={0.1} min={-3} max={3} />} />
         <Route path='exponenta' element={<ExponentFunction />} />
         <Route path='surface' element={<Surface />} />
         <Route path='flatsurface' element={<FlatSurface />} />
@@ -57,8 +58,10 @@ export default function App() {
         <Route path='teorver-strings' element={<TeorverStrings />} />
         <Route path='teorver-6-3-1' element={<Teorver631 />} />
         <Route path='teorver-3-3-1' element={<Teorver331 />} />
-        <Route path='matan-2-3' element={<PowerFunction step={1} />} />
+        <Route path='matan-2-3' element={<PowerFunction step={1} min={1} max={10} />} />
         <Route path='teorver-6-2-1' element={<Teorver621 />} />
+        <Route path='matan-10-2' element={<Matan102 />} />
+
 
         <Route path='*' element={<NoMatch />} />
       </Routes>

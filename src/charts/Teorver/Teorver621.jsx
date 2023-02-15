@@ -5,18 +5,18 @@ import {
   pointsX,
   initial_distribution_pd_621,
   norm_distribution_pdf_621,
+  quantile621,
+  gammas,
 } from './constants';
 
 // @ya_rovikov - initiator
 function Teorver621() {
-  const [nValue, setS] = useState(1);
-  const [quantileValue, setQuantileValue] = useState(1.01522203);
+  const [nValue, setGamma] = useState(0.45);
 
   const generateNormalDistr = useMemo(() => {
     let data = [];
     let dataX = norm_distribution_pdf_621[0];
     let dataY = norm_distribution_pdf_621[1];
-
     for (let i = 0; i < dataX.length; i += 1) {
       data.push([dataX[i], dataY[i]]);
     }
@@ -24,6 +24,8 @@ function Teorver621() {
   }, []);
 
   const generateInterval = useMemo(() => {
+    const quantileIndex = gammas.findIndex((e) => e === nValue);
+    const quantileValue = quantile621[quantileIndex] ?? 0;
     const res = quantileValue / 3.16227766;
     const point1 = 10.05 - res;
     const point2 = 10.05 + res;
@@ -31,21 +33,20 @@ function Teorver621() {
       [point1, -0.5],
       [point2, -0.5],
     ];
-  }, [quantileValue]);
+  }, [nValue]);
 
   const generateInitialDist = useMemo(() => {
     let data = [];
     for (let i = 0; i < initial_distribution_pd_621.length; i += 1) {
-      // console.log(initial_distribution_pd_621[i]);
       data.push([
-        initial_distribution_pd_621[i],
+        norm_distribution_pdf_621[0][i],
         initial_distribution_pd_621[i],
       ]);
     }
     return data;
   }, []);
 
-  const changeNvalue = (e) => setS(e.target.value);
+  const changeNvalue = (e) => setGamma(Number(e.target.value));
 
   useEffect(() => {
     let options = {
@@ -58,24 +59,22 @@ function Teorver621() {
       },
       xAxis: {
         name: 'x',
-        // min: -5,
-        // max: 5,
+        min: 8,
+        max: 12,
         minorTick: {
           show: true,
-          // splitNumber: 1,
         },
         minorSplitLine: {
           show: true,
         },
         axisLine: {
           lineStyle: {
-            width: '1.5',
+            width: '1',
           },
-          show: false,
         },
       },
       yAxis: {
-        name: 'y',
+        // name: 'y',
         // min: -0.5,
         // max: 1.5,
         minorTick: {
@@ -86,7 +85,7 @@ function Teorver621() {
         },
         axisLine: {
           lineStyle: {
-            width: '1.5',
+            width: '1',
           },
         },
       },
@@ -103,7 +102,7 @@ function Teorver621() {
           show: true,
           type: 'inside',
           filterMode: 'none',
-          yAxisIndex: [0],
+          // yAxisIndex: [0],
           // startValue: -100,
           // endValue: 100,
         },
@@ -111,7 +110,7 @@ function Teorver621() {
       series: [
         {
           type: 'line',
-          color: 'blue',
+          color: 'green',
           showSymbol: false,
           // clip: true,
           data: generateNormalDistr,
@@ -123,30 +122,60 @@ function Teorver621() {
           color: 'blue',
         },
         {
-          // symbolSize: 10,
           data: generateInterval,
           type: 'line',
           color: 'red',
+          showSymbol: false,
+        },
+        {
+          data: [
+            [generateInterval[0][0], -0.45],
+            [generateInterval[0][0], -0.55],
+          ],
+          type: 'line',
+          showSymbol: false,
+          color: 'red',
+          lineStyle: {
+            width: '1',
+          },
+        },
+        {
+          data: [
+            [generateInterval[1][0], -0.45],
+            [generateInterval[1][0], -0.55],
+          ],
+          type: 'line',
+          showSymbol: false,
+          color: 'red',
+          lineStyle: {
+            width: '1',
+          },
         },
         {
           // symbolSize: 10,
           showSymbol: false,
           data: [
-            [10, -10],
-            [10, 10],
+            [10, -3],
+            [10, 3],
           ],
           type: 'line',
           color: 'blue',
+          lineStyle: {
+            width: '1',
+          },
         },
         {
           // symbolSize: 10,
           showSymbol: false,
           data: [
-            [10.5, -10],
-            [10.5, 10],
+            [10.5, -3],
+            [10.5, 3],
           ],
           type: 'line',
           color: 'green',
+          lineStyle: {
+            width: '1',
+          },
         },
         {
           type: 'line',
@@ -165,22 +194,18 @@ function Teorver621() {
 
   return (
     <div className='wrapper'>
-      <div className='chart__formula-description'>
-        <div className='chart__formula'>
-          <span>График</span>
-        </div>
-      </div>
-      <div className='chart__control'>
+      <div className='chart__formula-description'></div>
+      <div className='chart__control' style={{ top: '140px', left: '100px' }}>
         <span>Параметр</span>
         <div className='valueRange'>
-          <span className='chart__value'>n = {nValue}</span>
+          <span className='chart__value'>gamma = {nValue}</span>
           <input
             onChange={(event) => changeNvalue(event)}
             type='range'
-            min='1'
-            max='32'
-            step='1'
-            defaultValue={1}
+            min='0.05'
+            max='0.95'
+            step='0.01'
+            defaultValue={0.45}
           />
         </div>
       </div>
