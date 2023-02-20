@@ -185,7 +185,7 @@ function Matan102() {
         )}
         {configData.type === 'x3' && (
           <MathJaxContext config={mathConfig}>
-            <MathJax> {'`int_-2^3 (x^3) / 8 dx = 8`'}</MathJax>
+            <MathJax> {'`int_0^4 (x^3) / 8 dx = 8`'}</MathJax>
           </MathJaxContext>
         )}
         {configData.type === '4' && (
