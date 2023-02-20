@@ -8,8 +8,8 @@ import s from  './styles.module.scss';
 function Matan_6_5() {
   const [aValue, setA] = useState(1);
   const [qValue, setQ] = useState(0.5);
-  const [aValueDebounce, setADebounce] = useState(1);
-  const [qValueDebounce, setQDebounce] = useState(0.5);
+  const [aValueDebounce, setADebounce] = useState(-4);
+  const [qValueDebounce, setQDebounce] = useState(-0.8);
 
   const calculations = useCallback((a, q, x) => {
     const denominator = 1 - Math.pow(q, Math.ceil(x));
@@ -122,7 +122,7 @@ function Matan_6_5() {
             min='-10'
             max='10'
             step='1'
-            defaultValue={1}
+            defaultValue={-4}
           />
         </div>
         <div className='valueRange'>
@@ -133,7 +133,7 @@ function Matan_6_5() {
             min='-1'
             max='1'
             step='0.1'
-            defaultValue={0.5}
+            defaultValue={-0.8}
           />
         </div>
       </div>

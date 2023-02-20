@@ -1,88 +1,120 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo } from 'react';
+import { Select } from 'antd';
+import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import { mathConfig } from '../../constants/mathConfig';
 
 import '../styles.scss';
 import './styles.scss';
 
-import useDebounce from '../../utilites/useDebounce';
+const selectOptions = [
+  { value: 'line', label: 'f(x) = 2x-1' },
+  {
+    value: 'x3',
+    label: (
+      <span>
+        f(x) = x<sup>3</sup>/8
+      </span>
+    ),
+  },
+  { value: '4', label: 'f(x) = 4' },
+];
 
 function Matan102() {
-  const [aValue, setA] = useState(1);
-  const [aValueDebounce, setADebounce] = useState(25);
-
-  const generateWeibull = useMemo(() => {
-    let data = [];
-    for (let i = 0; i < 80; i += 0.5) {
-      const i20 = Number((i / 20).toFixed(3));
-      const up1 = i20 * 0.1 * Math.exp(-1 * Math.pow(i20, 2));
-      data.push([i, up1]);
-    }
-    return data;
-  }, []);
-  const generateWeibull2 = useMemo(() => {
-    let data = [];
-    for (let i = aValue; i < 70; i += 0.5) {
-      const i20 = Number((i / 20).toFixed(3));
-      const up1 = i20 * 0.1 * Math.exp(-1 * Math.pow(i20, 2));
-      data.push([i, up1]);
-    }
-    return data;
-  }, [aValue]);
-
+  const [selectValue, setSelect] = useState(selectOptions[0]);
+  const [configData, setConfigData] = useState({ from: -2, to: 3 });
   const generateGamma = useMemo(() => {
     let data = [];
-    for (let i = -30; i < 80; i += 0.5) {
-      // const up1 = Math.pow(i, 7);
-      // const up2 = Math.exp((-i / 4).toFixed(4));
-      // const numenator = up1 * up2;
-      // const up4 = (numenator / denominator631).toFixed(4);
-      const res = 2 * i - 1;
+    for (let i = -10; i < 10; i += 0.05) {
+      const res =
+        configData.type === 'x3'
+          ? Math.pow(i, 3) / 8
+          : configData.type === '4'
+          ? 4
+          : 2 * i - 1;
+
       data.push([i, res]);
     }
     return data;
-  }, []);
-  const debounceValueA = useDebounce(aValueDebounce, 100);
+  }, [configData]);
 
   useEffect(() => {
-    setA(debounceValueA);
-  }, [debounceValueA]);
+    switch (selectValue) {
+      case 'line':
+        return setConfigData((state) => ({
+          from: -2,
+          to: 3,
+          type: 'line',
+        }));
+      case 'x3':
+        return setConfigData((state) => ({
+          from: 0,
+          to: 4,
+          type: 'x3',
+        }));
+      case '4':
+        return setConfigData((state) => ({
+          from: 2,
+          to: 8,
+          type: '4',
+        }));
+      default:
+        return setConfigData((state) => ({
+          from: -2,
+          to: 3,
+          type: 'line',
+        }));
+    }
+  }, [selectValue]);
 
   useEffect(() => {
     let options = {
       tooltip: {
         trigger: 'axis',
-
-        showContent: false,
+        valueFormatter: (value) => value.toFixed(2),
       },
       legend: {},
       xAxis: {
-        // max: 5,
+        name: 'x',
+        max: 10,
+        min: -6,
         axisLabel: {
           show: true,
         },
       },
       yAxis: {
-        // min: -1.5,
-        // max: 1.5,
+        name: 'y',
+        min: -6,
+        max: 8,
       },
-      // dataZoom: [
-      //   {
-      //     show: true,
-      //     type: 'inside',
-      //     filterMode: 'none',
-      //     xAxisIndex: [0],
-      //     // startValue: -20,
-      //     // endValue: 20,
-      //   },
-      //   {
-      //     show: true,
-      //     type: 'inside',
-      //     filterMode: 'none',
-      //     yAxisIndex: [0],
-      //     // startValue: -20,
-      //     // endValue: 20,
-      //   },
-      // ],
+      dataZoom: [
+        {
+          dataZoom: [
+            {
+              show: true,
+              type: 'inside',
+              filterMode: 'none',
+              xAxisIndex: [0],
+            },
+            {
+              show: true,
+              type: 'inside',
+              filterMode: 'none',
+              yAxisIndex: [0],
+            },
+          ],
+          show: true,
+          type: 'inside',
+          filterMode: 'none',
+          xAxisIndex: [0],
+        },
+        {
+          show: true,
+          type: 'inside',
+          filterMode: 'none',
+          yAxisIndex: [0],
+        },
+      ],
       visualMap: {
         type: 'piecewise',
         show: false,
@@ -90,13 +122,8 @@ function Matan102() {
         seriesIndex: [0],
         pieces: [
           {
-            gt: 0,
-            lt: aValue,
-            color: 'rgba(0, 0, 180, 0.4)',
-          },
-          {
-            gt: -aValue,
-            lt: aValue,
+            gt: configData.from,
+            lt: configData.to,
             color: 'rgba(0, 0, 180, 0.4)',
           },
         ],
@@ -111,7 +138,7 @@ function Matan102() {
           markLine: {
             symbol: ['none', 'none'],
             label: { show: false },
-            data: [{ xAxis: aValue }],
+            data: [{ xAxis: configData.from }, { xAxis: configData.to }],
           },
           areaStyle: {},
         },
@@ -126,25 +153,16 @@ function Matan102() {
           },
         },
         {
-          data: generateWeibull,
-          type: 'line',
-          color: '#d24848',
-          showSymbol: false,
-          markLine: {
-            symbol: ['none', 'none'],
-            label: { show: false },
-          },
+          symbolSize: 10,
+          data: [[configData.from, 0]],
+          type: 'scatter',
+          color: '#ce5169',
         },
         {
-          data: generateWeibull2,
-          type: 'line',
-          color: '#d24848',
-          showSymbol: false,
-          markLine: {
-            symbol: ['none', 'none'],
-            label: { show: false },
-          },
-          areaStyle: {},
+          symbolSize: 10,
+          data: [[configData.to, 0]],
+          type: 'scatter',
+          color: '#ce5169',
         },
       ],
     };
@@ -152,38 +170,40 @@ function Matan102() {
     let myChart = chartDom && echarts.init(chartDom);
     options && myChart && myChart.setOption(options, true);
     return () => myChart.dispose();
-  }, [aValue, generateGamma, generateWeibull, generateWeibull2]);
+  }, [generateGamma, configData]);
 
   return (
     <div className='wrapper'>
-      <div className='charts__description'>
-        <div className='charts__description__item'>
-          <span>Ошибка первого рода</span>
-          <div className='first'></div>
-        </div>
-        <div className='charts__description__item'>
-          <span>Ошибка второго рода</span>
-          <div className='second'></div>
-        </div>
+      <div
+        className='charts__description'
+        style={{ top: '45px', left: '120px' }}
+      >
+        {configData.type === 'line' && (
+          <MathJaxContext config={mathConfig}>
+            <MathJax> {'`int_-2^3 2x - dx = 0`'}</MathJax>
+          </MathJaxContext>
+        )}
+        {configData.type === 'x3' && (
+          <MathJaxContext config={mathConfig}>
+            <MathJax> {'`int_-2^3 (x^3) / 8 dx = 8`'}</MathJax>
+          </MathJaxContext>
+        )}
+        {configData.type === '4' && (
+          <MathJaxContext config={mathConfig}>
+            <MathJax> {'`int_2^8 4dx = 24`'}</MathJax>
+          </MathJaxContext>
+        )}
       </div>
-      <span className='desc__formula1'>
-        p (x|H<sub>0</sub>)
-      </span>
-      <span className='desc__formula2'>
-        p (x|H<sub>1</sub>)
-      </span>
-
-      <div className='chart__control value-up'>
-        <span>Параметр</span>
-        <div className='valueRange'>
-          <span className='chart__value'> h = {debounceValueA}</span>
-          <input
-            onChange={(event) => setADebounce(Number(event.target.value))}
-            type='range'
-            min='1'
-            max='80'
-            step='0.5'
-            defaultValue={25}
+      <div className='chart__control' style={{ top: '30px', left: '520px' }}>
+        <span>Вид графика</span>
+        <div className='valueRange' style={{ marginTop: '8px' }}>
+          <Select
+            defaultValue={selectOptions[0]}
+            style={{
+              width: 150,
+            }}
+            options={selectOptions}
+            onChange={(e) => setSelect(e)}
           />
         </div>
       </div>

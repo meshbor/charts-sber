@@ -48,8 +48,6 @@ function Matan_4_2() {
     setLoss(res);
   }, [aValue, bValue]);
 
-  console.log({ lossValue });
-
   useEffect(() => {
     let options = {
       // tooltip: {
