@@ -24,6 +24,7 @@ import Teorver631 from './charts/Teorver/Teorver631';
 import Teorver331 from './charts/Teorver/Teorver331';
 import Teorver621 from './charts/Teorver/Teorver621';
 import Matan102 from './charts/Matan/Matan_10_2';
+import Matan652 from './charts/Matan/Matan652';
 
 export default function App() {
   return (
@@ -61,8 +62,7 @@ export default function App() {
         <Route path='matan-2-3' element={<PowerFunction step={1} min={1} max={10} />} />
         <Route path='teorver-6-2-1' element={<Teorver621 />} />
         <Route path='matan-10-2' element={<Matan102 />} />
-
-
+        <Route path='matan-6-5-2' element={<Matan652 />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </>

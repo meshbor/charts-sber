@@ -83,6 +83,9 @@ export default function Router() {
           <Link to='/matan-10-2'>matan-10-2</Link>
         </li>
         <li>
+          <Link to='/matan-6-5-2'>matan-6-5-2</Link>
+        </li>
+        <li>
           <Link to='/router'>router</Link>
         </li>
       </ul>
