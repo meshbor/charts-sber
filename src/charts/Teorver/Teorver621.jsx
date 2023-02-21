@@ -30,8 +30,8 @@ function Teorver621() {
     const point1 = 10.05 - res;
     const point2 = 10.05 + res;
     return [
-      [point1, -0.5],
-      [point2, -0.5],
+      [point1, -0.2],
+      [point2, -0.2],
     ];
   }, [nValue]);
 
@@ -129,8 +129,8 @@ function Teorver621() {
         },
         {
           data: [
-            [generateInterval[0][0], -0.45],
-            [generateInterval[0][0], -0.55],
+            [generateInterval[0][0], -0.15],
+            [generateInterval[0][0], -0.25],
           ],
           type: 'line',
           showSymbol: false,
@@ -141,8 +141,8 @@ function Teorver621() {
         },
         {
           data: [
-            [generateInterval[1][0], -0.45],
-            [generateInterval[1][0], -0.55],
+            [generateInterval[1][0], -0.15],
+            [generateInterval[1][0], -0.25],
           ],
           type: 'line',
           showSymbol: false,
@@ -168,8 +168,8 @@ function Teorver621() {
           // symbolSize: 10,
           showSymbol: false,
           data: [
-            [10.5, -3],
-            [10.5, 3],
+            [10.05, -3],
+            [10.05, 3],
           ],
           type: 'line',
           color: 'green',
@@ -195,6 +195,11 @@ function Teorver621() {
   return (
     <div className='wrapper'>
       <div className='chart__formula-description'></div>
+      <div className='teor621__description' >
+       <div className='teor621__inner-desc'> <div className='teor621__first' ></div> <span>  Изначальное распределение Ν(10,1)</span></div>
+       <div className='teor621__inner-desc'> <div className='teor621__second' ></div><span>Распределение Ν(<span className='teor621__overline'>X</span>, 1/10)</span></div>
+       <div className='teor621__inner-desc'> <div className='teor621__third-wrapper'><div className='teor621__third' ></div><span>Точки выборки</span></div></div> 
+      </div>
       <div className='chart__control' style={{ top: '140px', left: '100px' }}>
         <span>Параметр</span>
         <div className='valueRange'>

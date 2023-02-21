@@ -58,3 +58,56 @@
   width: 90px;
   height: 35px;
 }
+.teor621 {
+  &__description {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: cursive;
+    position: absolute;
+    top: 432px;
+    left: 100px;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid #bebbbb;
+    padding: 4px;
+    border-radius: 10px;
+    line-height: 20px;
+  }
+  &__overline {
+    text-decoration: overline;
+  }
+  &__inner-desc {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &.third-inner {
+      width: 20px;
+    }
+  }
+  &__first {
+    width: 20px;
+    height: 5px;
+    background-color: blue;
+    border-radius: 5px;
+  }
+  &__second {
+    width: 20px;
+    height: 5px;
+    background-color: green;
+    border-radius: 5px;
+  }
+  &__third-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  &__third {
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 50%;
+  }
+}

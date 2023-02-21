@@ -2,6 +2,7 @@ import { React, useState, useRef, useEffect, useMemo } from 'react';
 import './styles.scss';
 import * as echarts from 'echarts';
 
+// https://t.me/ivan_matan - initiator
 function Matan652() {
   const [aValue, setA] = useState(2);
 

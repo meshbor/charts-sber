@@ -20,6 +20,7 @@ const selectOptions = [
   { value: '4', label: 'f(x) = 4' },
 ];
 
+// @https://t.me/vnmrdvtc - initiator
 function Matan102() {
   const [selectValue, setSelect] = useState(selectOptions[0]);
   const [configData, setConfigData] = useState({ from: -2, to: 3 });
