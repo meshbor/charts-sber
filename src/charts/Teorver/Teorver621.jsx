@@ -1,5 +1,6 @@
 import * as echarts from 'echarts';
 import { React, useState, useEffect, useMemo } from 'react';
+import useDebounce from '../../utilites/useDebounce';
 import '../styles.scss';
 import {
   pointsX,
@@ -12,6 +13,7 @@ import {
 // @ya_rovikov - initiator
 function Teorver621() {
   const [nValue, setGamma] = useState(0.45);
+  const [gammDebValue, setGammaDeb] = useState(0.45);
 
   const generateNormalDistr = useMemo(() => {
     let data = [];
@@ -46,7 +48,13 @@ function Teorver621() {
     return data;
   }, []);
 
-  const changeNvalue = (e) => setGamma(Number(e.target.value));
+  const changeNvalue = (e) => setGammaDeb(Number(e.target.value));
+
+  const debounceValueMu = useDebounce(gammDebValue, 100);
+
+  useEffect(() => {
+    setGamma(debounceValueMu);
+  }, [debounceValueMu]);
 
   useEffect(() => {
     let options = {
@@ -203,7 +211,7 @@ function Teorver621() {
       <div className='chart__control' style={{ top: '140px', left: '100px' }}>
         <span>Параметр</span>
         <div className='valueRange'>
-          <span className='chart__value'>gamma = {nValue}</span>
+          <span className='chart__value'>γ = {nValue}</span>
           <input
             onChange={(event) => changeNvalue(event)}
             type='range'

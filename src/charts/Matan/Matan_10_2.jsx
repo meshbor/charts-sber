@@ -181,7 +181,7 @@ function Matan102() {
       >
         {configData.type === 'line' && (
           <MathJaxContext config={mathConfig}>
-            <MathJax> {'`int_-2^3 2x - dx = 0`'}</MathJax>
+            <MathJax> {'`int_-2^3 (2x - 1) dx = 0`'}</MathJax>
           </MathJaxContext>
         )}
         {configData.type === 'x3' && (
